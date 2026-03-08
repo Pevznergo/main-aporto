@@ -5,184 +5,104 @@ import ContextCanvas from "@/components/ContextCanvas";
 
 export default function Home() {
   return (
-    <div className="min-h-screen flex flex-col font-sans relative">
-      {/* Edge Glow Overlay */}
-      <div className="fixed inset-0 pointer-events-none z-50 edge-glow animate-breathing"></div>
+    <>
+      {/* Animated Background Canvas Component */}
+      <BackgroundCanvas />
 
-      {/* Header */}
-      <header className="sticky top-0 z-50 h-[72px] flex items-center justify-between px-8 bg-[#121212]/80 backdrop-blur-md border-b border-[#ffffff10]">
-        <div className="flex items-center">
-          <Link href="/" className="flex items-center gap-2">
-            <Image
-              src="/logo.svg"
-              alt="Aporto Logo"
-              width={120}
-              height={32}
-              className="h-8 w-auto relative z-10"
-            />
-          </Link>
-        </div>
+      {/* Hero Section */}
+      <section className="relative px-6 pt-32 pb-24 flex flex-col items-center justify-center text-center min-h-[85vh]">
+        {/* Top and Bottom gradient fades to blend with background seamlessly */}
+        <div className="absolute top-0 left-0 right-0 h-32 bg-gradient-to-b from-[#121212] to-transparent pointer-events-none z-10"></div>
+        <div className="absolute bottom-0 left-0 right-0 h-48 bg-gradient-to-t from-[#121212] to-transparent pointer-events-none z-10"></div>
 
-        <nav className="hidden md:flex items-center gap-8 text-sm font-medium text-[#fafafa]/90">
-          <Link href="https://app.aporto.tech" className="hover:text-white transition-colors">Platform</Link>
-          <Link href="https://docs.aporto.tech" className="hover:text-white transition-colors">Docs</Link>
-        </nav>
+        <div className="relative z-20 max-w-4xl mx-auto flex flex-col items-center">
+          <h1 className="text-[52px] leading-[1.1] font-normal mb-8 tracking-tight text-shadow-sm">
+            Aporto gives AI agents trusted access <span className="text-[#6be195]">to the API economy.</span>
+          </h1>
 
-        <div className="flex items-center gap-4">
-          <Link href="#contact" className="hidden sm:block text-sm font-medium hover:text-white transition-colors">
-            Contact
-          </Link>
-          <Link
-            href="#signup"
-            className="text-sm font-semibold bg-[#6be195] text-[#121212] px-4 py-2 rounded-[7px] hover:bg-[#5cd487] transition-colors"
-          >
-            Sign up
-          </Link>
-        </div>
-      </header>
-
-      <main className="flex-1 flex flex-col relative">
-        {/* Animated Background Canvas Component */}
-        <BackgroundCanvas />
-
-        {/* Hero Section */}
-        <section className="relative px-6 pt-32 pb-24 flex flex-col items-center justify-center text-center min-h-[85vh]">
-          {/* Top and Bottom gradient fades to blend with background seamlessly */}
-          <div className="absolute top-0 left-0 right-0 h-32 bg-gradient-to-b from-[#121212] to-transparent pointer-events-none z-10"></div>
-          <div className="absolute bottom-0 left-0 right-0 h-48 bg-gradient-to-t from-[#121212] to-transparent pointer-events-none z-10"></div>
-
-          <div className="relative z-20 max-w-4xl mx-auto flex flex-col items-center">
-            <h1 className="text-[52px] leading-[1.1] font-normal mb-8 tracking-tight text-shadow-sm">
-              Aporto gives AI agents trusted access <span className="text-[#6be195]">to the API economy.</span>
-            </h1>
-
-            <div className="flex flex-col sm:flex-row items-center gap-4 mt-4">
-              <Link
-                href="#get-access"
-                className="bg-[#e0effe] text-[#121212] font-medium px-6 py-3 rounded-[7px] hover:bg-[#d0e5fb] transition-colors w-full sm:w-auto shadow-[0_0_15px_rgba(224,239,254,0.3)] hover:shadow-[0_0_20px_rgba(224,239,254,0.5)]"
-              >
-                Get Access
-              </Link>
-              <Link
-                href="#contact-us"
-                className="bg-transparent text-white font-medium px-6 py-3 rounded-[7px] border border-white/20 hover:bg-white/10 transition-colors w-full sm:w-auto"
-              >
-                Contact Us
-              </Link>
-            </div>
+          <div className="flex flex-col sm:flex-row items-center gap-4 mt-4">
+            <Link
+              href="#get-access"
+              className="bg-[#e0effe] text-[#121212] font-medium px-6 py-3 rounded-[7px] hover:bg-[#d0e5fb] transition-colors w-full sm:w-auto shadow-[0_0_15px_rgba(224,239,254,0.3)] hover:shadow-[0_0_20px_rgba(224,239,254,0.5)]"
+            >
+              Get Access
+            </Link>
+            <Link
+              href="#contact-us"
+              className="bg-transparent text-white font-medium px-6 py-3 rounded-[7px] border border-white/20 hover:bg-white/10 transition-colors w-full sm:w-auto"
+            >
+              Contact Us
+            </Link>
           </div>
-        </section>
+        </div>
+      </section>
 
-        {/* Context Statement Section */}
-        <section className="relative w-full bg-[#121212] py-[140px] flex flex-col items-center justify-center text-center z-20 overflow-hidden border-y border-[#ffffff0a]">
-          <ContextCanvas />
+      {/* Context Statement Section */}
+      <section className="relative w-full bg-[#121212] py-[140px] flex flex-col items-center justify-center text-center z-20 overflow-hidden border-y border-[#ffffff0a]">
+        <ContextCanvas />
 
-          <div className="relative z-10 w-full max-w-[1320px] mx-auto px-6 flex flex-col items-start text-left">
-            <h2 className="text-[42px] leading-[50px] font-medium mb-8 text-[#fafafa] tracking-[-0.42px] max-w-4xl text-left w-full">
-              The next trillion buyers won’t be human.
-            </h2>
-            <div className="text-[16px] leading-[24px] text-white/70 tracking-[-0.16px] max-w-3xl flex flex-col gap-6">
-              <p>
-                Over the last decade, billions have gone into scaling model intelligence, and almost zero into scaling access.
-              </p>
-              <p>
-                Today, AI agents write code, but they cannot buy the infrastructure to run it. They can plan a marketing campaign, but they cannot pay for the SMS API to send it. They can design a landing page, but they cannot pay for the image generation to populate it. They can build an app with user accounts, but they cannot provision the authentication service to secure it.
-              </p>
-              <p>
-                <strong className="font-bold text-white/90">The agentic era cannot progress</strong>
-                <strong className="font-bold text-white/70"> until AI agents can autonomously access and operate across real-world systems and services.</strong>
+        <div className="relative z-10 w-full max-w-[1320px] mx-auto px-6 flex flex-col items-start text-left">
+          <h2 className="text-[42px] leading-[50px] font-medium mb-8 text-[#fafafa] tracking-[-0.42px] max-w-4xl text-left w-full">
+            The next trillion buyers won’t be human.
+          </h2>
+          <div className="text-[16px] leading-[24px] text-white/70 tracking-[-0.16px] max-w-3xl flex flex-col gap-6">
+            <p>
+              Over the last decade, billions have gone into scaling model intelligence, and almost zero into scaling access.
+            </p>
+            <p>
+              Today, AI agents write code, but they cannot buy the infrastructure to run it. They can plan a marketing campaign, but they cannot pay for the SMS API to send it. They can design a landing page, but they cannot pay for the image generation to populate it. They can build an app with user accounts, but they cannot provision the authentication service to secure it.
+            </p>
+            <p>
+              <strong className="font-bold text-white/90">The agentic era cannot progress</strong>
+              <strong className="font-bold text-white/70"> until AI agents can autonomously access and operate across real-world systems and services.</strong>
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Features Section */}
+      <section className="relative px-6 py-32 bg-[#121212] flex flex-col items-center z-10">
+        <div className="max-w-6xl mx-auto w-full">
+          <h2 className="text-[42px] leading-[1.2] font-normal mb-24 text-center max-w-3xl mx-auto">
+            Money is the universal API key.
+          </h2>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {/* Feature Card 1 */}
+            <div className="p-8 rounded-2xl bg-[#1a1a1a] border border-[#ffffff10] flex flex-col gap-4 hover:border-[#ffffff30] transition-colors">
+              <div className="w-12 h-12 rounded-full bg-[#6be195]/10 border border-[#6be195]/20 flex items-center justify-center text-[#6be195] mb-4 shadow-[0_0_15px_rgba(107,225,149,0.1)]">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="11" cy="11" r="8" /><path d="m21 21-4.3-4.3" /></svg>
+              </div>
+              <h3 className="text-xl font-bold">Discover and provision services</h3>
+              <p className="text-[#a0a0a0] leading-relaxed">
+                Enable your agents to autonomously find and integrate the APIs and tools they need to complete complex tasks without human intervention.
               </p>
             </div>
-          </div>
-        </section>
 
-        {/* Features Section */}
-        <section className="relative px-6 py-32 bg-[#121212] flex flex-col items-center z-10">
-          <div className="max-w-6xl mx-auto w-full">
-            <h2 className="text-[42px] leading-[1.2] font-normal mb-24 text-center max-w-3xl mx-auto">
-              Money is the universal API key.
-            </h2>
-
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              {/* Feature Card 1 */}
-              <div className="p-8 rounded-2xl bg-[#1a1a1a] border border-[#ffffff10] flex flex-col gap-4 hover:border-[#ffffff30] transition-colors">
-                <div className="w-12 h-12 rounded-full bg-[#6be195]/10 border border-[#6be195]/20 flex items-center justify-center text-[#6be195] mb-4 shadow-[0_0_15px_rgba(107,225,149,0.1)]">
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="11" cy="11" r="8" /><path d="m21 21-4.3-4.3" /></svg>
-                </div>
-                <h3 className="text-xl font-bold">Discover and provision services</h3>
-                <p className="text-[#a0a0a0] leading-relaxed">
-                  Enable your agents to autonomously find and integrate the APIs and tools they need to complete complex tasks without human intervention.
-                </p>
+            {/* Feature Card 2 */}
+            <div className="p-8 rounded-2xl bg-[#1a1a1a] border border-[#ffffff10] flex flex-col gap-4 hover:border-[#ffffff30] transition-colors">
+              <div className="w-12 h-12 rounded-full bg-[#6be195]/10 border border-[#6be195]/20 flex items-center justify-center text-[#6be195] mb-4 shadow-[0_0_15px_rgba(107,225,149,0.1)]">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="12" x2="12" y1="2" y2="22" /><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" /></svg>
               </div>
-
-              {/* Feature Card 2 */}
-              <div className="p-8 rounded-2xl bg-[#1a1a1a] border border-[#ffffff10] flex flex-col gap-4 hover:border-[#ffffff30] transition-colors">
-                <div className="w-12 h-12 rounded-full bg-[#6be195]/10 border border-[#6be195]/20 flex items-center justify-center text-[#6be195] mb-4 shadow-[0_0_15px_rgba(107,225,149,0.1)]">
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="12" x2="12" y1="2" y2="22" /><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" /></svg>
-                </div>
-                <h3 className="text-xl font-bold">Pay autonomously for usage</h3>
-                <p className="text-[#a0a0a0] leading-relaxed">
-                  Provide agents with budgets and payment capabilities to settle micro-transactions seamlessly across the digital economy.
-                </p>
-              </div>
-
-              {/* Feature Card 3 */}
-              <div className="p-8 rounded-2xl bg-[#1a1a1a] border border-[#ffffff10] flex flex-col gap-4 hover:border-[#ffffff30] transition-colors">
-                <div className="w-12 h-12 rounded-full bg-[#6be195]/10 border border-[#6be195]/20 flex items-center justify-center text-[#6be195] mb-4 shadow-[0_0_15px_rgba(107,225,149,0.1)]">
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" /></svg>
-                </div>
-                <h3 className="text-xl font-bold">Operate within defined guardrails</h3>
-                <p className="text-[#a0a0a0] leading-relaxed">
-                  Set strict spending limits, usage policies, and approval workflows to maintain complete control over your autonomous systems.
-                </p>
-              </div>
-            </div>
-          </div>
-        </section>
-      </main>
-
-      {/* Footer */}
-      <footer className="border-t border-[#ffffff10] pt-16 pb-8 px-8 bg-[#121212] relative z-20">
-        <div className="max-w-6xl mx-auto flex flex-col md:flex-row justify-between gap-12 mb-16">
-          <div className="flex flex-col gap-6 max-w-sm">
-            <Image
-              src="/logo.svg"
-              alt="Aporto Logo"
-              width={120}
-              height={32}
-              className="h-8 w-auto relative z-10"
-            />
-            <p className="text-[#a0a0a0]">Shaping the agentic economy</p>
-          </div>
-
-          <div className="grid grid-cols-2 sm:grid-cols-3 gap-12">
-            <div className="flex flex-col gap-4">
-              <h4 className="font-semibold text-white">Product</h4>
-              <Link href="#" className="text-[#a0a0a0] hover:text-white text-sm transition-colors">Github</Link>
-              <Link href="#" className="text-[#a0a0a0] hover:text-white text-sm transition-colors">Get Access</Link>
-              <Link href="#" className="text-[#a0a0a0] hover:text-white text-sm transition-colors">Quick Start</Link>
-              <Link href="#" className="text-[#a0a0a0] hover:text-white text-sm transition-colors">Documentation</Link>
+              <h3 className="text-xl font-bold">Pay autonomously for usage</h3>
+              <p className="text-[#a0a0a0] leading-relaxed">
+                Provide agents with budgets and payment capabilities to settle micro-transactions seamlessly across the digital economy.
+              </p>
             </div>
 
-            <div className="flex flex-col gap-4">
-              <h4 className="font-semibold text-white">About</h4>
-              <Link href="#" className="text-[#a0a0a0] hover:text-white text-sm transition-colors">Careers</Link>
-              <Link href="#" className="text-[#a0a0a0] hover:text-white text-sm transition-colors">Blog</Link>
-              <Link href="#" className="text-[#a0a0a0] hover:text-white text-sm transition-colors">Privacy Policy</Link>
-              <Link href="#" className="text-[#a0a0a0] hover:text-white text-sm transition-colors">Terms of Use</Link>
-            </div>
-
-            <div className="flex flex-col gap-4">
-              <h4 className="font-semibold text-white">Contact</h4>
-              <Link href="#" className="text-[#a0a0a0] hover:text-white text-sm transition-colors">Let's Chat</Link>
+            {/* Feature Card 3 */}
+            <div className="p-8 rounded-2xl bg-[#1a1a1a] border border-[#ffffff10] flex flex-col gap-4 hover:border-[#ffffff30] transition-colors">
+              <div className="w-12 h-12 rounded-full bg-[#6be195]/10 border border-[#6be195]/20 flex items-center justify-center text-[#6be195] mb-4 shadow-[0_0_15px_rgba(107,225,149,0.1)]">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" /></svg>
+              </div>
+              <h3 className="text-xl font-bold">Operate within defined guardrails</h3>
+              <p className="text-[#a0a0a0] leading-relaxed">
+                Set strict spending limits, usage policies, and approval workflows to maintain complete control over your autonomous systems.
+              </p>
             </div>
           </div>
         </div>
-
-        <div className="max-w-6xl mx-auto pt-8 border-t border-[#ffffff10] flex flex-col sm:flex-row items-center justify-between text-xs text-[#a0a0a0]">
-          <p>© {new Date().getFullYear()} Aporto. All rights reserved.</p>
-        </div>
-      </footer>
-    </div>
+      </section>
+    </>
   );
 }
