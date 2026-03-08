@@ -1,0 +1,39 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+
+  --color-sapiom-bg: #121212;
+  --color-sapiom-text: #fafafa;
+  --color-sapiom-green: #6be195;
+  --color-sapiom-secondary: #e0effe;
+  --color-sapiom-gray: #a0a0a0;
+
+  --animate-breathing: breathing 4s ease-in-out infinite;
+
+  @keyframes breathing {
+
+    0%,
+    100% {
+      opacity: 0.2;
+    }
+
+    50% {
+      opacity: 0.6;
+    }
+  }
+}
+
+@layer base {
+  body {
+    background-color: var(--color-sapiom-bg);
+    color: var(--color-sapiom-text);
+  }
+}
+
+@layer utilities {
+  .edge-glow {
+    box-shadow: inset 0 0 150px rgba(107, 225, 149, 0.15);
+  }
+}
