@@ -17,6 +17,9 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Aporto",
   description: "Aporto gives AI agents trusted access to the API economy.",
+  icons: {
+    icon: "/icon.svg",
+  },
 };
 
 export default function RootLayout({
