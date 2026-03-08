@@ -20,17 +20,15 @@ export default function Footer() {
                     <div className="flex flex-col gap-4">
                         <h4 className="font-semibold text-white">Product</h4>
                         <Link href="#" className="text-[#a0a0a0] hover:text-white text-sm transition-colors">Github</Link>
-                        <Link href="#" className="text-[#a0a0a0] hover:text-white text-sm transition-colors">Get Access</Link>
-                        <Link href="#" className="text-[#a0a0a0] hover:text-white text-sm transition-colors">Quick Start</Link>
-                        <Link href="#" className="text-[#a0a0a0] hover:text-white text-sm transition-colors">Documentation</Link>
+                        <Link href="https://app.aporto.tech" className="text-[#a0a0a0] hover:text-white text-sm transition-colors">Get Access</Link>
+                        <Link href="https://app.aporto.tech" className="text-[#a0a0a0] hover:text-white text-sm transition-colors">Quick Start</Link>
+                        <Link href="https://docs.aporto.tech" className="text-[#a0a0a0] hover:text-white text-sm transition-colors">Documentation</Link>
                     </div>
 
                     <div className="flex flex-col gap-4">
                         <h4 className="font-semibold text-white">About</h4>
-                        <Link href="#" className="text-[#a0a0a0] hover:text-white text-sm transition-colors">Careers</Link>
-                        <Link href="#" className="text-[#a0a0a0] hover:text-white text-sm transition-colors">Blog</Link>
-                        <Link href="#" className="text-[#a0a0a0] hover:text-white text-sm transition-colors">Privacy Policy</Link>
-                        <Link href="#" className="text-[#a0a0a0] hover:text-white text-sm transition-colors">Terms of Use</Link>
+                        <Link href="/privacy-policy" className="text-[#a0a0a0] hover:text-white text-sm transition-colors">Privacy Policy</Link>
+                        <Link href="/terms-of-use" className="text-[#a0a0a0] hover:text-white text-sm transition-colors">Terms of Use</Link>
                     </div>
 
                     <div className="flex flex-col gap-4">
