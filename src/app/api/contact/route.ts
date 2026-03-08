@@ -1,18 +1,15 @@
 import { NextResponse } from "next/server";
 import { Resend } from "resend";
 
-// Ensure the API key is provided
-const resendApiKey = process.env.RESEND_API_KEY;
-const resend = resendApiKey ? new Resend(resendApiKey) : null;
-
-// Target email from environment, fallback for safety
-const targetEmail = process.env.CONTACT_EMAIL || "info@aporto.tech";
-
 export async function POST(request: Request) {
     try {
         const data = await request.json();
 
         const { firstName, lastName, email, company, role, message, timeframe } = data;
+
+        // Ensure the API key and target email are provided dynamically at runtime
+        const resendApiKey = process.env.RESEND_API_KEY;
+        const targetEmail = process.env.CONTACT_EMAIL || "info@aporto.tech";
 
         // Basic validation
         if (!firstName || !email || !role || !message) {
@@ -22,13 +19,15 @@ export async function POST(request: Request) {
             );
         }
 
-        if (!resend) {
+        if (!resendApiKey) {
             console.error("RESEND_API_KEY is not configured.");
             return NextResponse.json(
-                { error: "Server email configuration is missing" },
+                { error: "Server email configuration is missing from environment variables." },
                 { status: 500 }
             );
         }
+
+        const resend = new Resend(resendApiKey);
 
         // Attempt to send email via Resend
         const { data: resendData, error } = await resend.emails.send({
