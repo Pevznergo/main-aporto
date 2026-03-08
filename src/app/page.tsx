@@ -22,13 +22,13 @@ export default function Home() {
 
           <div className="flex flex-col sm:flex-row items-center gap-4 mt-4">
             <Link
-              href="#get-access"
+              href="https://app.aporto.tech"
               className="bg-[#e0effe] text-[#121212] font-medium px-6 py-3 rounded-[7px] hover:bg-[#d0e5fb] transition-colors w-full sm:w-auto shadow-[0_0_15px_rgba(224,239,254,0.3)] hover:shadow-[0_0_20px_rgba(224,239,254,0.5)]"
             >
               Get Access
             </Link>
             <Link
-              href="#contact-us"
+              href="/contact"
               className="bg-transparent text-white font-medium px-6 py-3 rounded-[7px] border border-white/20 hover:bg-white/10 transition-colors w-full sm:w-auto"
             >
               Contact Us
