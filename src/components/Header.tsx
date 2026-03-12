@@ -26,7 +26,7 @@ export default function Header() {
                     Contact
                 </Link>
                 <Link
-                    href="#signup"
+                    href="https://app.aporto.tech"
                     className="text-sm font-semibold bg-[#6be195] text-[#121212] px-4 py-2 rounded-[7px] hover:bg-[#5cd487] transition-colors"
                 >
                     Sign up
