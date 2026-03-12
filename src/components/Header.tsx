@@ -9,10 +9,11 @@ export default function Header() {
                     <Image
                         src="/logo.svg"
                         alt="Aporto Logo"
-                        width={120}
+                        width={32}
                         height={32}
                         className="h-8 w-auto relative z-10"
                     />
+                    <span className="text-white text-xl font-semibold tracking-tight">Aporto</span>
                 </Link>
             </div>
 

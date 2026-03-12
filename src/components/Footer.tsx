@@ -6,13 +6,16 @@ export default function Footer() {
         <footer className="border-t border-[#ffffff10] pt-16 pb-8 px-8 bg-[#121212] relative z-20">
             <div className="max-w-6xl mx-auto flex flex-col md:flex-row justify-between gap-12 mb-16">
                 <div className="flex flex-col gap-6 max-w-sm">
-                    <Image
-                        src="/logo.svg"
-                        alt="Aporto Logo"
-                        width={120}
-                        height={32}
-                        className="h-8 w-auto relative z-10"
-                    />
+                    <Link href="/" className="flex items-center gap-2">
+                        <Image
+                            src="/logo.svg"
+                            alt="Aporto Logo"
+                            width={32}
+                            height={32}
+                            className="h-8 w-auto relative z-10"
+                        />
+                        <span className="text-white text-xl font-semibold tracking-tight">Aporto</span>
+                    </Link>
                     <p className="text-[#a0a0a0]">Shaping the agentic economy</p>
                 </div>
 
