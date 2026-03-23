@@ -16,7 +16,14 @@ export default function Footer() {
                         />
                         <span className="text-white text-xl font-semibold tracking-tight">Aporto</span>
                     </Link>
-                    <p className="text-[#a0a0a0]">Shaping the agentic economy</p>
+                    <div className="flex flex-col gap-4">
+                        <p className="text-[#a0a0a0]">Shaping the agentic economy</p>
+                        <div className="text-[#808080] text-sm flex flex-col gap-1 mt-2">
+                            <p className="text-[#a0a0a0] font-medium">Aporto Inc.</p>
+                            <p>1111B S Governors Ave # 84680</p>
+                            <p>Dover, DE 19904</p>
+                        </div>
+                    </div>
                 </div>
 
                 <div className="grid grid-cols-2 sm:grid-cols-3 gap-12">
