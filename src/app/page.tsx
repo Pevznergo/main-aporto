@@ -43,19 +43,23 @@ export default function Home() {
 
         <div className="relative z-10 w-full max-w-[1320px] mx-auto px-6 flex flex-col items-start text-left">
           <h2 className="text-[42px] leading-[50px] font-medium mb-8 text-[#fafafa] tracking-[-0.42px] max-w-4xl text-left w-full">
-            The next trillion buyers won’t be human.
+            Vibe coding is a reality. But the code can't deploy.
           </h2>
-          <div className="text-[16px] leading-[24px] text-white/70 tracking-[-0.16px] max-w-3xl flex flex-col gap-6">
+          <div className="text-[18px] leading-[28px] text-white/70 tracking-[-0.16px] max-w-3xl flex flex-col gap-6">
             <p>
-              Over the last decade, billions have gone into scaling model intelligence, and almost zero into scaling access.
+              You ask Claude to write a script that texts you every Saturday to buy flowers, skipping the weeks you’re traveling. In seconds, the agent generates the perfect code.
             </p>
             <p>
-              Today, AI agents write code, but they cannot buy the infrastructure to run it. They can plan a marketing campaign, but they cannot pay for the SMS API to send it. They can design a landing page, but they cannot pay for the image generation to populate it. They can build an app with user accounts, but they cannot provision the authentication service to secure it.
+              But in reality, nothing works. You have to pay for hosting. You have to pay a provider to send the SMS. And your AI agent doesn't have a credit card.
             </p>
             <p>
-              <strong className="font-bold text-white/90">The agentic era cannot progress</strong>
-              <strong className="font-bold text-white/70"> until AI agents can autonomously access and operate across real-world systems and services.</strong>
+              Handing your raw credit card details to an autonomous agent is a financial disaster waiting to happen. So what happens? The AI writes the code, but you still have to manually provision, integrate, and pay for the infrastructure.
             </p>
+            <div className="p-6 mt-2 border-l-2 border-[#6be195] bg-[#6be195]/5 rounded-r-lg">
+              <p className="text-white/90 font-medium leading-relaxed">
+                We built Aporto to fix this. We provide a single, secure billing gateway where you connect your card once, set strict spending limits, and safely let your agents pay for any API they need to turn code into a real product.
+              </p>
+            </div>
           </div>
         </div>
       </section>

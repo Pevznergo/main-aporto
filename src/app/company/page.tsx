@@ -9,26 +9,27 @@ export default function CompanyPage() {
 
                 <div className="flex flex-col gap-6 text-[17px]">
                     <p>
-                        We’re big believers in AI agents. We think they’re going to change everything.
-                    </p>
-                    <p>
-                        We’re also big believers that the worst way to roll out agents is to offboard your existing tools by onboarding AI native ones or quietly degrade quality because nothing is wired up right. We’ve been in sales. We know what it’s like to churn off systems, retrain teams, and watch performance dip while everyone “figures out the new tool.” That sucks.
-                    </p>
-                    <p>
-                        We’re GTM engineers ready to help you bring AI into your company. We’re half-software, and half-service. And we get asked this all the time:
+                        Imagine a future where vibe coding is actually a reality.
                     </p>
                     <div className="pl-6 border-l border-[#ffffff20] text-[#e0e0e0] italic space-y-2">
-                        <p>“How can you afford to be a service?”</p>
-                        <p>“Is this some kind of trap? Will it just be another SaaS dashboard for my team?”</p>
+                        <p>
+                            "Send me a text every Saturday at 7 PM reminding me to buy flowers for my wife. Rotate the suggestions—roses, gerberas, lilies, hyacinths, orchids. Mix up the order sometimes so it feels spontaneous. Oh, and if my calendar says I'm traveling, skip that week."
+                        </p>
                     </div>
-                    <p className="text-white font-medium text-lg">
-                        It won’t.
+                    <p>
+                        In seconds, Claude generates the perfect script. But in reality, nothing works. Why? Because you need to pay for hosting, and you need to pay a provider to actually send that SMS. And your AI agent doesn't have a credit card.
                     </p>
                     <p>
-                        We’re AI-native from day one, but we’re not here to drop a tool on you and disappear. You work with us. We wire this into your stack. We build agents around plays that already work for you. We keep quality high while you get the upside of AI.
+                        Honestly, handing your raw credit card details to an autonomous agent sounds like a fast track to financial disaster—you'd have much bigger problems to worry about than remembering to buy flowers. You can't just run it on your local machine either; your laptop isn't always on, and real-world applications are rarely this trivial.
                     </p>
                     <p>
-                        There’s a product you can log into. There’s Slack, where your team already works. And there’s us, in the loop, making sure the system keeps doing what it’s supposed to do.
+                        That's exactly why we built <strong>Aporto</strong>.
+                    </p>
+                    <p>
+                        We provide a unified billing gateway for all the APIs your AI needs. You connect your card in one secure place, set strict spending limits, and safely grant your agents access to the outside world. Through Aporto, your agents can instantly plug into web search, diverse AI models, SMS gateways, and more—seamlessly embedding them into the code they write.
+                    </p>
+                    <p className="text-white font-medium text-lg pt-2 tracking-wide">
+                        Code turns into a real, breathing product. And the world gets a little bit better.
                     </p>
                 </div>
 
