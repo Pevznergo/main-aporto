@@ -16,11 +16,15 @@ export default function Home() {
         <div className="absolute bottom-0 left-0 right-0 h-48 bg-gradient-to-t from-[#121212] to-transparent pointer-events-none z-10"></div>
 
         <div className="relative z-20 max-w-4xl mx-auto flex flex-col items-center">
-          <h1 className="text-[52px] leading-[1.1] font-normal mb-8 tracking-tight text-shadow-sm">
-            Aporto gives AI agents trusted access <span className="text-[#6be195]">to the API economy.</span>
+          <h1 className="text-[52px] sm:text-[64px] leading-[1.1] font-normal mb-6 tracking-tight text-shadow-sm text-center">
+            AI writes the code.<br />
+            <span className="text-[#6be195]">Aporto pays for the infrastructure.</span>
           </h1>
+          <p className="text-xl text-[#a0a0a0] mb-8 font-medium tracking-wide text-center">
+            The secure billing gateway for your autonomous agents.
+          </p>
 
-          <div className="flex flex-col sm:flex-row items-center gap-4 mt-4">
+          <div className="flex flex-col sm:flex-row items-center gap-4 mt-2">
             <Link
               href="https://app.aporto.tech"
               className="bg-[#e0effe] text-[#121212] font-medium px-6 py-3 rounded-[7px] hover:bg-[#d0e5fb] transition-colors w-full sm:w-auto shadow-[0_0_15px_rgba(224,239,254,0.3)] hover:shadow-[0_0_20px_rgba(224,239,254,0.5)]"
