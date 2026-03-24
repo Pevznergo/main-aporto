@@ -22,6 +22,7 @@ export default function Footer() {
                             <p className="text-[#a0a0a0] font-medium">Aporto Inc.</p>
                             <p>1111B S Governors Ave # 84680</p>
                             <p>Dover, DE 19904</p>
+                            <p><a href="mailto:support@aporto.tech" className="hover:text-white transition-colors">support@aporto.tech</a></p>
                         </div>
                     </div>
                 </div>
@@ -29,7 +30,6 @@ export default function Footer() {
                 <div className="grid grid-cols-2 sm:grid-cols-3 gap-12">
                     <div className="flex flex-col gap-4">
                         <h4 className="font-semibold text-white">Product</h4>
-                        <Link href="#" className="text-[#a0a0a0] hover:text-white text-sm transition-colors">Github</Link>
                         <Link href="https://app.aporto.tech" className="text-[#a0a0a0] hover:text-white text-sm transition-colors">Get Access</Link>
                         <Link href="https://app.aporto.tech" className="text-[#a0a0a0] hover:text-white text-sm transition-colors">Quick Start</Link>
                         <Link href="https://docs.aporto.tech" className="text-[#a0a0a0] hover:text-white text-sm transition-colors">Documentation</Link>
@@ -49,7 +49,7 @@ export default function Footer() {
             </div>
 
             <div className="max-w-6xl mx-auto pt-8 border-t border-[#ffffff10] flex flex-col sm:flex-row items-center justify-between text-xs text-[#a0a0a0]">
-                <p>© {new Date().getFullYear()} Aporto. All rights reserved.</p>
+                <p>© {new Date().getFullYear()} Aporto Inc. All rights reserved.</p>
             </div>
         </footer>
     );

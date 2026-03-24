@@ -9,7 +9,7 @@ export async function POST(request: Request) {
 
         // Ensure the API key and target email are provided dynamically at runtime
         const resendApiKey = process.env.RESEND_API_KEY;
-        const targetEmail = process.env.CONTACT_EMAIL || "info@aporto.tech";
+        const targetEmail = process.env.CONTACT_EMAIL || "support@aporto.tech";
 
         // Basic validation
         if (!firstName || !email || !role || !message) {

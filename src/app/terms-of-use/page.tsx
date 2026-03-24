@@ -5,9 +5,10 @@ export default function TermsOfUse() {
                 <h1 className="text-[48px] font-medium text-[#fafafa] tracking-tight mb-4">Terms of Use</h1>
 
                 <p><strong>Last Updated:</strong> March 8, 2026</p>
-                <p><strong>Company:</strong> Aporto</p>
+                <p><strong>Company:</strong> Aporto Inc.</p>
+                <p><strong>Address:</strong> 1111B S Governors Ave # 84680, Dover, DE 19904</p>
                 <p><strong>Website:</strong> aporto.tech</p>
-                <p><strong>Contact:</strong> info@aporto.tech</p>
+                <p><strong>Contact:</strong> support@aporto.tech</p>
 
                 <hr className="border-[#ffffff10] my-8" />
 
