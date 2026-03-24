@@ -19,6 +19,7 @@ export default function Header() {
 
             <nav className="hidden md:flex items-center gap-8 text-sm font-medium text-[#fafafa]/90">
                 <Link href="https://app.aporto.tech" className="hover:text-white transition-colors">Platform</Link>
+                <Link href="/company" className="hover:text-white transition-colors">Company</Link>
                 <Link href="https://docs.aporto.tech" className="hover:text-white transition-colors">Docs</Link>
             </nav>
 

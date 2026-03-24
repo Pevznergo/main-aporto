@@ -38,11 +38,10 @@ export default function CompanyPage() {
                     <Link href="https://www.linkedin.com/in/igorpevzner/" target="_blank" rel="noopener noreferrer" className="flex flex-col items-center gap-3 group">
                         <div className="w-[72px] h-[72px] rounded-full overflow-hidden border border-[#ffffff20] group-hover:border-[#ffffff60] transition-colors relative">
                             {/* NOTE: You will need to add an igor.png file in the public directory */}
-                            <Image 
+                            <img 
                                 src="/igor.png" 
                                 alt="Igor" 
-                                fill
-                                className="object-cover grayscale group-hover:grayscale-0 transition-all duration-300" 
+                                className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-300" 
                             />
                         </div>
                         <span className="text-white text-sm font-medium tracking-wide">Igor</span>
@@ -50,11 +49,10 @@ export default function CompanyPage() {
                     <Link href="https://www.linkedin.com/in/igorpevzner/" target="_blank" rel="noopener noreferrer" className="flex flex-col items-center gap-3 group">
                         <div className="w-[72px] h-[72px] rounded-full overflow-hidden border border-[#ffffff20] group-hover:border-[#ffffff60] transition-colors relative">
                             {/* NOTE: You will need to add a konstantin.png file in the public directory */}
-                            <Image 
+                            <img 
                                 src="/konstantin.png" 
                                 alt="Konstantin" 
-                                fill
-                                className="object-cover grayscale group-hover:grayscale-0 transition-all duration-300" 
+                                className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-300" 
                             />
                         </div>
                         <span className="text-white text-sm font-medium tracking-wide">Konstantin</span>
