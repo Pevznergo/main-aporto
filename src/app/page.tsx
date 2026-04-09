@@ -17,11 +17,11 @@ export default function Home() {
 
         <div className="relative z-20 max-w-4xl mx-auto flex flex-col items-center">
           <h1 className="text-[52px] sm:text-[64px] leading-[1.1] font-normal mb-6 tracking-tight text-shadow-sm text-center">
-            AI writes the code.<br />
-            <span className="text-[#6be195]">Aporto pays for the infrastructure.</span>
+            Your agent needs a credit card.<br />
+            <span className="text-[#6be195]">Give it one. Safely.</span>
           </h1>
           <p className="text-xl text-[#a0a0a0] mb-8 font-medium tracking-wide text-center">
-            The secure billing gateway for your autonomous agents.
+            Connect your card once. Set limits per agent. Your agents call any API they need.
           </p>
 
           <div className="flex flex-col sm:flex-row items-center gap-4 mt-2">
@@ -51,7 +51,7 @@ export default function Home() {
           </h2>
           <div className="text-[18px] leading-[28px] text-white/70 tracking-[-0.16px] max-w-3xl flex flex-col gap-6">
             <p>
-              You ask Claude to write a script that texts you every Saturday to buy flowers, skipping the weeks you’re traveling. In seconds, the agent generates the perfect code.
+              You ask Claude to write a script that texts you every Saturday to buy flowers, skipping the weeks you're traveling. In seconds, the agent generates the perfect code.
             </p>
             <p>
               But in reality, nothing works. You have to pay for hosting. You have to pay a provider to send the SMS. And your AI agent doesn't have a credit card.
@@ -61,7 +61,7 @@ export default function Home() {
             </p>
             <div className="p-6 mt-2 border-l-2 border-[#6be195] bg-[#6be195]/5 rounded-r-lg">
               <p className="text-white/90 font-medium leading-relaxed">
-                We built Aporto to fix this. We provide a single, secure billing gateway where you connect your card once, set strict spending limits, and safely let your agents pay for any API they need to turn code into a real product.
+                We built Aporto so your agents can call any API they need — and pay for it — without you hardcoding your credit card into the code.
               </p>
             </div>
           </div>
@@ -81,21 +81,31 @@ export default function Home() {
               <div className="w-12 h-12 rounded-full bg-[#6be195]/10 border border-[#6be195]/20 flex items-center justify-center text-[#6be195] mb-4 shadow-[0_0_15px_rgba(107,225,149,0.1)]">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="11" cy="11" r="8" /><path d="m21 21-4.3-4.3" /></svg>
               </div>
-              <h3 className="text-xl font-bold">Discover and provision services</h3>
+              <h3 className="text-xl font-bold">Works with your stack</h3>
               <p className="text-[#a0a0a0] leading-relaxed">
-                Enable your agents to autonomously find and integrate the APIs and tools they need to complete complex tasks without human intervention.
+                Prelude, ElevenLabs, Fal.ai, Linkup, You.com, Anchor Browser, Blaxel, and the full Upstash suite. Your agent calls them exactly as it would any API — Aporto handles the billing behind the scenes.
               </p>
             </div>
 
-            {/* Feature Card 2 */}
+            {/* Feature Card 2 — Code snippet */}
             <div className="p-8 rounded-2xl bg-[#1a1a1a] border border-[#ffffff10] flex flex-col gap-4 hover:border-[#ffffff30] transition-colors">
               <div className="w-12 h-12 rounded-full bg-[#6be195]/10 border border-[#6be195]/20 flex items-center justify-center text-[#6be195] mb-4 shadow-[0_0_15px_rgba(107,225,149,0.1)]">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="12" x2="12" y1="2" y2="22" /><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" /></svg>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="16 18 22 12 16 6" /><polyline points="8 6 2 12 8 18" /></svg>
               </div>
-              <h3 className="text-xl font-bold">Pay autonomously for usage</h3>
-              <p className="text-[#a0a0a0] leading-relaxed">
-                Provide agents with budgets and payment capabilities to settle micro-transactions seamlessly across the digital economy.
-              </p>
+              <h3 className="text-xl font-bold">Add to your agent in minutes</h3>
+              <div className="rounded-lg bg-[#0d0d0d] border border-[#ffffff10] p-4 font-mono text-sm flex flex-col gap-2">
+                <p className="text-[#6be195]">npm install @aporto-tech/sdk</p>
+                <div className="border-t border-[#ffffff10] pt-2 flex flex-col gap-1">
+                  <p className="text-[#a0a0a0]"><span className="text-[#7cb8ff]">import</span> Aporto <span className="text-[#7cb8ff]">from</span> <span className="text-[#ce9178]">&apos;@aporto-tech/sdk&apos;</span>;</p>
+                  <p className="text-[#a0a0a0]">&nbsp;</p>
+                  <p className="text-[#a0a0a0]"><span className="text-[#7cb8ff]">const</span> client = <span className="text-[#7cb8ff]">new</span> <span className="text-[#dcdcaa]">Aporto</span>&#40;&#123;</p>
+                  <p className="text-[#a0a0a0]">&nbsp;&nbsp;apiKey: process.env.<span className="text-[#9cdcfe]">APORTO_API_KEY</span>,</p>
+                  <p className="text-[#a0a0a0]">&#125;&#41;;</p>
+                </div>
+              </div>
+              <Link href="https://docs.aporto.tech" target="_blank" rel="noopener noreferrer" className="text-[#6be195] text-sm hover:underline mt-1">
+                Read the docs →
+              </Link>
             </div>
 
             {/* Feature Card 3 */}
@@ -103,12 +113,38 @@ export default function Home() {
               <div className="w-12 h-12 rounded-full bg-[#6be195]/10 border border-[#6be195]/20 flex items-center justify-center text-[#6be195] mb-4 shadow-[0_0_15px_rgba(107,225,149,0.1)]">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" /></svg>
               </div>
-              <h3 className="text-xl font-bold">Operate within defined guardrails</h3>
+              <h3 className="text-xl font-bold">Your card. Your limits.</h3>
               <p className="text-[#a0a0a0] leading-relaxed">
-                Set strict spending limits, usage policies, and approval workflows to maintain complete control over your autonomous systems.
+                Connect once. Set a spending cap per agent — $10/month, $50/month, whatever fits your project. If an agent goes rogue, it hits the cap. Your card doesn&apos;t.
               </p>
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* Works With Section */}
+      <section className="relative px-6 py-16 bg-[#121212] flex flex-col items-center z-10 border-t border-[#ffffff08]">
+        <p className="text-[#505050] text-sm uppercase tracking-[0.15em] mb-10 font-medium">Works with</p>
+        <div className="flex flex-wrap items-center justify-center gap-x-10 gap-y-8 max-w-4xl mx-auto">
+          {[
+            { name: "Prelude", logo: "/logos/prelude.png" },
+            { name: "Linkup", logo: "/logos/linkup.png" },
+            { name: "You.com", logo: "/logos/youcom.png" },
+            { name: "ElevenLabs", logo: "/logos/elevenlabs.png" },
+            { name: "Fal.ai", logo: "/logos/falai.svg" },
+            { name: "Anchor Browser", logo: "/logos/anchorbrowser.png" },
+            { name: "Blaxel", logo: "/logos/blaxel.png" },
+            { name: "Upstash", logo: "/logos/upstash.svg" },
+          ].map(({ name, logo }) => (
+            <div key={name} className="flex flex-col items-center gap-2 group">
+              <img
+                src={logo}
+                alt={name}
+                className="h-8 w-auto object-contain grayscale brightness-0 invert opacity-40 group-hover:opacity-70 transition-opacity"
+              />
+              <span className="text-[#383838] text-[11px] tracking-wide group-hover:text-[#505050] transition-colors">{name}</span>
+            </div>
+          ))}
         </div>
       </section>
     </>
