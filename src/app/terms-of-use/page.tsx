@@ -8,7 +8,8 @@ export default function TermsOfUse() {
                 <p><strong>Company:</strong> Aporto Inc.</p>
                 <p><strong>Address:</strong> 1111B S Governors Ave # 84680, Dover, DE 19904</p>
                 <p><strong>Website:</strong> aporto.tech</p>
-                <p><strong>Contact:</strong> support@aporto.tech</p>
+                <p><strong>Contact:</strong> owen.walker@aporto.tech</p>
+                <p><strong>Business registration number:</strong> 10557055</p>
 
                 <hr className="border-[#ffffff10] my-8" />
 

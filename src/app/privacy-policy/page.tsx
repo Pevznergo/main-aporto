@@ -8,7 +8,8 @@ export default function PrivacyPolicy() {
                 <p><strong>Company:</strong> Aporto Inc.</p>
                 <p><strong>Address:</strong> 1111B S Governors Ave # 84680, Dover, DE 19904</p>
                 <p><strong>Website:</strong> aporto.tech</p>
-                <p><strong>Email:</strong> support@aporto.tech</p>
+                <p><strong>Email:</strong> owen.walker@aporto.tech</p>
+                <p><strong>Business registration number:</strong> 10557055</p>
 
                 <hr className="border-[#ffffff10] my-8" />
 
@@ -70,7 +71,7 @@ export default function PrivacyPolicy() {
                     <li><strong>Deletion.</strong> Request deletion of your personal information, subject to legal exceptions.</li>
                     <li><strong>Opt-Out.</strong> Unsubscribe from marketing communications or request removal from our contact lists.</li>
                 </ul>
-                <p>To exercise these rights, please contact us at support@aporto.tech.</p>
+                <p>To exercise these rights, please contact us at owen.walker@aporto.tech.</p>
                 <p>We honor all valid requests promptly and maintain suppression lists to respect your preferences.</p>
 
                 <h2 className="text-[24px] font-medium text-[#fafafa] mt-8 mb-4">8. Cookies and Tracking</h2>
@@ -95,7 +96,7 @@ export default function PrivacyPolicy() {
 
                 <h2 className="text-[24px] font-medium text-[#fafafa] mt-8 mb-4">12. Contact Us</h2>
                 <p>
-                    If you have any questions about this Privacy Policy or your data, please contact us at: support@aporto.tech.
+                    If you have any questions about this Privacy Policy or your data, please contact us at: owen.walker@aporto.tech.
                 </p>
             </div>
         </div>

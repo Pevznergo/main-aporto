@@ -22,7 +22,8 @@ export default function Footer() {
                             <p className="text-[#a0a0a0] font-medium">Aporto Inc.</p>
                             <p>1111B S Governors Ave # 84680</p>
                             <p>Dover, DE 19904</p>
-                            <p><a href="mailto:support@aporto.tech" className="hover:text-white transition-colors">support@aporto.tech</a></p>
+                            <p><a href="mailto:owen.walker@aporto.tech" className="hover:text-white transition-colors">owen.walker@aporto.tech</a></p>
+                            <p>Business registration number: 10557055</p>
                         </div>
                     </div>
                 </div>
