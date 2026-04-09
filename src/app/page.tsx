@@ -121,32 +121,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-
-      {/* Works With Section */}
-      <section className="relative px-6 py-16 bg-[#121212] flex flex-col items-center z-10 border-t border-[#ffffff08]">
-        <p className="text-[#505050] text-sm uppercase tracking-[0.15em] mb-10 font-medium">Works with</p>
-        <div className="flex flex-wrap items-center justify-center gap-x-10 gap-y-8 max-w-4xl mx-auto">
-          {[
-            { name: "Prelude", logo: "/logos/prelude.png" },
-            { name: "Linkup", logo: "/logos/linkup.png" },
-            { name: "You.com", logo: "/logos/youcom.png" },
-            { name: "ElevenLabs", logo: "/logos/elevenlabs.png" },
-            { name: "Fal.ai", logo: "/logos/falai.svg" },
-            { name: "Anchor Browser", logo: "/logos/anchorbrowser.png" },
-            { name: "Blaxel", logo: "/logos/blaxel.png" },
-            { name: "Upstash", logo: "/logos/upstash.svg" },
-          ].map(({ name, logo }) => (
-            <div key={name} className="flex flex-col items-center gap-2 group">
-              <img
-                src={logo}
-                alt={name}
-                className="h-8 w-auto object-contain grayscale brightness-0 invert opacity-40 group-hover:opacity-70 transition-opacity"
-              />
-              <span className="text-[#383838] text-[11px] tracking-wide group-hover:text-[#505050] transition-colors">{name}</span>
-            </div>
-          ))}
-        </div>
-      </section>
     </>
   );
 }
