@@ -16,7 +16,7 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "Aporto",
-  description: "Aporto gives AI agents trusted access to the API economy.",
+  description: "Aporto lets AI agents pay for the tools they use — and lets builders get paid per call. The payment layer for the agentic economy.",
   icons: {
     icon: [
       { url: "/favicon.ico", sizes: "any" },

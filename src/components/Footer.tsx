@@ -31,7 +31,7 @@ export default function Footer() {
                 <div className="grid grid-cols-2 sm:grid-cols-3 gap-12">
                     <div className="flex flex-col gap-4">
                         <h4 className="font-semibold text-white">Product</h4>
-                        <Link href="https://app.aporto.tech" className="text-[#a0a0a0] hover:text-white text-sm transition-colors">Get Access</Link>
+                        <Link href="https://app.aporto.tech" className="text-[#a0a0a0] hover:text-white text-sm transition-colors">Get started</Link>
                         <Link href="https://app.aporto.tech" className="text-[#a0a0a0] hover:text-white text-sm transition-colors">Quick Start</Link>
                         <Link href="https://docs.aporto.tech" className="text-[#a0a0a0] hover:text-white text-sm transition-colors">Documentation</Link>
                     </div>

@@ -18,7 +18,7 @@ export default function Header() {
             </div>
 
             <nav className="hidden md:flex items-center gap-8 text-sm font-medium text-[#fafafa]/90">
-                <Link href="https://app.aporto.tech" className="hover:text-white transition-colors">Platform</Link>
+                <Link href="https://app.aporto.tech" className="hover:text-white transition-colors">Dashboard</Link>
                 <Link href="/company" className="hover:text-white transition-colors">Company</Link>
                 <Link href="https://docs.aporto.tech" className="hover:text-white transition-colors">Docs</Link>
             </nav>
@@ -31,7 +31,7 @@ export default function Header() {
                     href="https://app.aporto.tech"
                     className="text-sm font-semibold bg-[#6be195] text-[#121212] px-4 py-2 rounded-[7px] hover:bg-[#5cd487] transition-colors"
                 >
-                    Sign up
+                    Get started
                 </Link>
             </div>
         </header>

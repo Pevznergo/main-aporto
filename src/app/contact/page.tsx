@@ -110,9 +110,10 @@ export default function ContactPage() {
                                 required
                                 id="Role"
                                 name="role"
+                                defaultValue=""
                                 className="h-[56px] px-4 bg-transparent border border-[#ffffff33] rounded-[7px] text-white focus:outline-none focus:border-[#6be195] transition-colors appearance-none"
                             >
-                                <option value="" disabled selected className="text-black">Select an option</option>
+                                <option value="" disabled className="text-black">Select an option</option>
                                 <option value="Developer" className="text-black">Developer</option>
                                 <option value="Product" className="text-black">Product</option>
                                 <option value="Founder" className="text-black">Founder</option>
@@ -138,9 +139,10 @@ export default function ContactPage() {
                                 required
                                 id="Timeframe"
                                 name="timeframe"
+                                defaultValue=""
                                 className="h-[56px] px-4 bg-transparent border border-[#ffffff33] rounded-[7px] text-white focus:outline-none focus:border-[#6be195] transition-colors appearance-none"
                             >
-                                <option value="" disabled selected className="text-black">Select an option</option>
+                                <option value="" disabled className="text-black">Select an option</option>
                                 <option value="Building Now" className="text-black">Building Now</option>
                                 <option value="Next 30 days" className="text-black">Next 30 days</option>
                                 <option value="Exploring for future" className="text-black">Exploring for future</option>
