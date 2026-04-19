@@ -25,12 +25,16 @@ export default function Home() {
             <div className="flex flex-col sm:flex-row items-center gap-4 mt-2">
               <Link
                 href="https://app.aporto.tech"
+                data-mp-label="get_started"
+                data-mp-section="hero"
                 className="bg-[#6be195] text-[#121212] font-medium px-6 py-3.5 rounded-[7px] hover:bg-[#5cd487] transition-colors w-full sm:w-auto shadow-[0_0_15px_rgba(107,225,149,0.3)] hover:shadow-[0_0_20px_rgba(107,225,149,0.5)]"
               >
                 Get started
               </Link>
               <Link
                 href="https://app.aporto.tech"
+                data-mp-label="start_earning"
+                data-mp-section="hero"
                 className="bg-transparent text-white font-medium px-6 py-3.5 rounded-[7px] border border-white/20 hover:bg-white/10 transition-colors w-full sm:w-auto"
               >
                 Start earning →
@@ -65,6 +69,8 @@ export default function Home() {
               </ul>
               <Link
                 href="https://app.aporto.tech"
+                data-mp-label="get_started"
+                data-mp-section="who_its_for_agents"
                 className="mt-4 self-start bg-[#6be195] text-[#121212] font-medium px-5 py-3.5 rounded-[7px] hover:bg-[#5cd487] transition-colors text-sm"
               >
                 Get started
@@ -84,6 +90,8 @@ export default function Home() {
               </ul>
               <Link
                 href="https://app.aporto.tech"
+                data-mp-label="start_earning"
+                data-mp-section="who_its_for_builders"
                 className="mt-4 self-start bg-transparent text-white font-medium px-5 py-3.5 rounded-[7px] border border-white/20 hover:bg-white/10 transition-colors text-sm"
               >
                 Start earning →
@@ -128,7 +136,7 @@ export default function Home() {
                   <p className="text-[#a0a0a0]">&#125;&#41;;</p>
                 </div>
               </div>
-              <Link href="https://docs.aporto.tech" target="_blank" rel="noopener noreferrer" className="text-[#6be195] text-sm hover:underline mt-1">
+              <Link href="https://docs.aporto.tech" target="_blank" rel="noopener noreferrer" data-mp-label="read_docs" data-mp-section="features" className="text-[#6be195] text-sm hover:underline mt-1">
                 Read the docs →
               </Link>
             </div>

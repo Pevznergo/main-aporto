@@ -24,6 +24,11 @@ export default function ContactPage() {
 
             if (response.ok) {
                 setIsSuccess(true);
+                const mp = (window as any).mixpanel;
+                if (mp) mp.track("contact_form_submitted", {
+                    role: String(data.role ?? ""),
+                    timeframe: String(data.timeframe ?? ""),
+                });
             } else {
                 const result = await response.json();
                 setErrorMsg(result.error || "Failed to send message. Please try again.");

@@ -18,17 +18,19 @@ export default function Header() {
             </div>
 
             <nav className="hidden md:flex items-center gap-8 text-sm font-medium text-[#fafafa]/90">
-                <Link href="https://app.aporto.tech" className="hover:text-white transition-colors">Dashboard</Link>
-                <Link href="/company" className="hover:text-white transition-colors">Company</Link>
-                <Link href="https://docs.aporto.tech" className="hover:text-white transition-colors">Docs</Link>
+                <Link href="https://app.aporto.tech" data-mp-label="dashboard" data-mp-section="header" className="hover:text-white transition-colors">Dashboard</Link>
+                <Link href="/company" data-mp-label="company" data-mp-section="header" className="hover:text-white transition-colors">Company</Link>
+                <Link href="https://docs.aporto.tech" data-mp-label="docs" data-mp-section="header" className="hover:text-white transition-colors">Docs</Link>
             </nav>
 
             <div className="flex items-center gap-4">
-                <Link href="/contact" className="hidden sm:block text-sm font-medium hover:text-white transition-colors">
+                <Link href="/contact" data-mp-label="contact" data-mp-section="header" className="hidden sm:block text-sm font-medium hover:text-white transition-colors">
                     Contact
                 </Link>
                 <Link
                     href="https://app.aporto.tech"
+                    data-mp-label="get_started"
+                    data-mp-section="header"
                     className="text-sm font-semibold bg-[#6be195] text-[#121212] px-4 py-2 rounded-[7px] hover:bg-[#5cd487] transition-colors"
                 >
                     Get started
