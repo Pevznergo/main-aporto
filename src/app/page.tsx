@@ -1,17 +1,5 @@
 import Link from "next/link";
-import Image from "next/image";
 import BackgroundCanvas from "@/components/BackgroundCanvas";
-
-const providers = [
-  { name: "ElevenLabs", src: "/logos/elevenlabs.png" },
-  { name: "fal.ai", src: "/logos/falai.svg" },
-  { name: "Linkup", src: "/logos/linkup.png" },
-  { name: "Prelude", src: "/logos/prelude.png" },
-  { name: "You.com", src: "/logos/youcom.png" },
-  { name: "Anchor Browser", src: "/logos/anchorbrowser.png" },
-  { name: "Blaxel", src: "/logos/blaxel.png" },
-  { name: "Upstash", src: "/logos/upstash.svg" },
-];
 
 export default function Home() {
   return (
@@ -34,7 +22,7 @@ export default function Home() {
               <span className="text-[#6be195]">to everything.</span>
             </h1>
             <p className="text-xl text-[#a0a0a0] mb-8 font-medium tracking-wide text-center max-w-2xl">
-              One API key. 100+ skills. Voice, search, image gen, LLMs, SMS and more.
+              One API key. Hundreds of skills. Voice, search, image gen, LLMs, SMS and more.
               Smart routing picks the best provider by price and latency — automatically.
             </p>
 
@@ -65,25 +53,6 @@ export default function Home() {
           </div>
         </section>
       </div>
-
-      {/* Provider logos */}
-      <section className="relative px-6 py-12 bg-[#121212] z-10">
-        <div className="max-w-5xl mx-auto">
-          <p className="text-[13px] text-[#ffffff30] uppercase tracking-widest mb-8 text-center">Skills available now</p>
-          <div className="flex flex-wrap items-center justify-center gap-x-10 gap-y-6">
-            {providers.map((p) => (
-              <Image
-                key={p.name}
-                src={p.src}
-                alt={p.name}
-                width={100}
-                height={28}
-                className="h-7 w-auto object-contain opacity-50 hover:opacity-80 transition-opacity grayscale"
-              />
-            ))}
-          </div>
-        </div>
-      </section>
 
       {/* Routing — how it works */}
       <section className="relative px-6 py-28 bg-[#121212] flex flex-col items-center z-10">
@@ -235,26 +204,6 @@ export default function Home() {
                   </div>
                 ))}
               </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Stats strip */}
-      <section className="relative px-6 py-16 bg-[#121212] z-10 border-t border-[#ffffff08]">
-        <div className="max-w-4xl mx-auto">
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 text-center">
-            <div className="flex flex-col gap-1">
-              <p className="text-[40px] font-semibold text-white">220K+</p>
-              <p className="text-[#a0a0a0] text-sm">skill calls this month</p>
-            </div>
-            <div className="flex flex-col gap-1">
-              <p className="text-[40px] font-semibold text-[#6be195]">2.2×</p>
-              <p className="text-[#a0a0a0] text-sm">month-over-month growth</p>
-            </div>
-            <div className="flex flex-col gap-1">
-              <p className="text-[40px] font-semibold text-white">&lt;1s</p>
-              <p className="text-[#a0a0a0] text-sm">payment settlement via x402</p>
             </div>
           </div>
         </div>
