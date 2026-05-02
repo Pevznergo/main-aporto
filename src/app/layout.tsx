@@ -17,8 +17,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Aporto",
-  description: "Aporto lets AI agents pay for the tools they use — and lets builders get paid per call. The payment layer for the agentic economy.",
+  title: "Aporto | AI Skill Network",
+  description: "Aporto is the AI skill network and MCP router where developers connect agents to hundreds of skills, and publishers earn per successful call.",
   icons: {
     icon: [
       { url: "/favicon.ico", sizes: "any" },

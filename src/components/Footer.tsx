@@ -17,7 +17,7 @@ export default function Footer() {
                         <span className="text-white text-xl font-semibold tracking-tight">Aporto</span>
                     </Link>
                     <div className="flex flex-col gap-4">
-                        <p className="text-[#a0a0a0]">Shaping the agentic economy</p>
+                        <p className="text-[#a0a0a0]">AI skill network for agents and API builders.</p>
                         <div className="text-[#808080] text-sm flex flex-col gap-1 mt-2">
                             <p className="text-[#a0a0a0] font-medium">Aporto Inc.</p>
                             <p>1111B S Governors Ave # 84680</p>
@@ -31,8 +31,8 @@ export default function Footer() {
                 <div className="grid grid-cols-2 sm:grid-cols-3 gap-12">
                     <div className="flex flex-col gap-4">
                         <h4 className="font-semibold text-white">Product</h4>
-                        <Link href="https://app.aporto.tech" className="text-[#a0a0a0] hover:text-white text-sm transition-colors">Get started</Link>
-                        <Link href="https://app.aporto.tech" className="text-[#a0a0a0] hover:text-white text-sm transition-colors">Quick Start</Link>
+                        <Link href="https://app.aporto.tech" className="text-[#a0a0a0] hover:text-white text-sm transition-colors">Add MCP router</Link>
+                        <Link href="/publishers" className="text-[#a0a0a0] hover:text-white text-sm transition-colors">Publish a skill</Link>
                         <Link href="https://docs.aporto.tech" className="text-[#a0a0a0] hover:text-white text-sm transition-colors">Documentation</Link>
                     </div>
 
@@ -45,7 +45,7 @@ export default function Footer() {
 
                     <div className="flex flex-col gap-4">
                         <h4 className="font-semibold text-white">Contact</h4>
-                        <Link href="/contact" className="text-[#a0a0a0] hover:text-white text-sm transition-colors">Let's Chat</Link>
+                        <Link href="/contact" className="text-[#a0a0a0] hover:text-white text-sm transition-colors">Let&apos;s Chat</Link>
                     </div>
                 </div>
             </div>
