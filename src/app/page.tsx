@@ -3,8 +3,8 @@ import BackgroundCanvas from "@/components/BackgroundCanvas";
 
 const networkStats = [
   { value: "1 MCP", label: "router for every agent" },
-  { value: "100s", label: "of skills and providers" },
-  { value: "1000s", label: "of calls every day" },
+  { value: "1000+", label: "skills and providers" },
+  { value: "12,000+", label: "requests every day" },
   { value: "Paid", label: "per successful call" },
 ];
 
@@ -61,7 +61,7 @@ export default function Home() {
                 The skill network where agents get tools and builders get paid.
               </h1>
               <p className="text-lg sm:text-xl text-[#b7b7b7] mb-8 font-medium leading-relaxed max-w-2xl">
-                Add Aporto&apos;s MCP router to any AI agent and route work across hundreds of skills and providers. Publish your own API or agent skill and earn for every successful call.
+                Add Aporto&apos;s MCP router to any AI agent and route work across 1000+ skills and providers. Publish your own API or agent skill and earn for every successful call.
               </p>
 
               <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 w-full sm:w-auto">

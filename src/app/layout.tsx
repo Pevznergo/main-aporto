@@ -18,7 +18,7 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "Aporto | AI Skill Network",
-  description: "Aporto is the AI skill network and MCP router where developers connect agents to hundreds of skills, and publishers earn per successful call.",
+  description: "Aporto is the AI skill network and MCP router where developers connect agents to 1000+ skills, with 12,000+ requests routed every day.",
   icons: {
     icon: [
       { url: "/favicon.ico", sizes: "any" },
