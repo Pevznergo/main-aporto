@@ -1,295 +1,498 @@
+"use client";
+
+import Image from "next/image";
 import Link from "next/link";
-import BackgroundCanvas from "@/components/BackgroundCanvas";
+import type { CSSProperties } from "react";
+import { useState } from "react";
+import styles from "./page.module.css";
 
-const networkStats = [
-  { value: "1 MCP", label: "router for every agent" },
-  { value: "1000+", label: "skills and providers" },
-  { value: "12,000+", label: "requests every day" },
-  { value: "Paid", label: "per successful call" },
+type SkillCategory = {
+  label: string;
+  count: string;
+  description: string;
+  command: string;
+  skills: string[];
+};
+
+const skillCategories: SkillCategory[] = [
+  {
+    label: "Image generation",
+    count: "180+ skills",
+    description: "Generate, edit, upscale, reframe, remove backgrounds, and route prompts across visual models.",
+    command: "aporto.runSkill({ intent: 'Nano Banana 2 1K image generation', params: { prompt } })",
+    skills: ["Nano Banana", "Nano Banana 2", "Nano Banana 2 Pro", "Flux", "GPT Images", "Ideogram", "Recraft", "Qwen Image", "Seedream", "Topaz Upscale"],
+  },
+  {
+    label: "Video generation",
+    count: "140+ skills",
+    description: "Create video from text, images, references, speech, and motion controls with automatic polling.",
+    command: "aporto.runSkill({ intent: 'Sora 2 fast text to video', params: { prompt } })",
+    skills: ["Sora 2 Fast", "Sora 2 Stable", "Veo 3.1 720P", "Kling 2.6", "Runway", "Wan 2.7", "Seedance", "Hailuo", "Lip Sync", "Video Upscale"],
+  },
+  {
+    label: "Search and scraping",
+    count: "220+ skills",
+    description: "Find, scrape, enrich, and verify web data through managed providers and structured outputs.",
+    command: "aporto.runSkill({ intent: 'find LinkedIn profiles for AI agency founders' })",
+    skills: ["Web Search", "AI Research", "LinkedIn Profiles", "LinkedIn Jobs", "Apify Actors", "Company Lookup", "Website Extraction", "SERP Search"],
+  },
+  {
+    label: "Audio and speech",
+    count: "95+ skills",
+    description: "Generate speech, dialogue, sound effects, music, transcription, and voice workflows.",
+    command: "aporto.runSkill({ intent: 'ElevenLabs text to speech', params: { text } })",
+    skills: ["ElevenLabs TTS", "Sound Effects", "Dialogue Audio", "Suno Music", "Speech to Text", "Voice Cloning", "Audio Cleanup", "Podcast Clips"],
+  },
+  {
+    label: "LLM routing",
+    count: "400+ models",
+    description: "Route reasoning and chat workloads across model families from one interface.",
+    command: "aporto.chat({ model: 'openai/gpt-4o-mini', messages })",
+    skills: ["OpenAI", "Claude", "Gemini", "DeepSeek", "Grok", "Llama", "Qwen", "Mistral", "Perplexity", "400+ models"],
+  },
+  {
+    label: "Automation",
+    count: "120+ skills",
+    description: "Let agents trigger repeatable business workflows without custom provider glue.",
+    command: "aporto.runSkill({ intent: 'automate lead enrichment workflow', params })",
+    skills: ["Lead Enrichment", "CRM Updates", "Email Workflows", "Form Filling", "Data Cleanup", "Research Agents", "Browser Actions"],
+  },
+  {
+    label: "Documents",
+    count: "80+ skills",
+    description: "Parse, summarize, classify, and transform documents with traceable execution logs.",
+    command: "aporto.runSkill({ intent: 'extract invoice fields from PDF', params: { fileUrl } })",
+    skills: ["PDF Extraction", "Invoice Parsing", "Contract Review", "OCR", "Summaries", "Classification", "Table Extraction"],
+  },
+  {
+    label: "Commerce",
+    count: "60+ skills",
+    description: "Power catalog, marketplace, and product workflows with specialized AI capabilities.",
+    command: "aporto.runSkill({ intent: 'generate ecommerce product media', params })",
+    skills: ["Product Images", "Descriptions", "Review Mining", "Price Tracking", "Catalog Cleanup", "Market Research"],
+  },
+  {
+    label: "Developer tools",
+    count: "75+ skills",
+    description: "Give builders generation, QA, extraction, and diagnostics skills through the same MCP router.",
+    command: "aporto.runSkill({ intent: 'debug failed API request', params })",
+    skills: ["Code Review", "API Debugging", "Docs Generation", "Test Data", "Error Analysis", "Log Search", "SDK Helpers"],
+  },
 ];
 
-const routerBenefits = [
+const audienceCards = [
+  "Developers building AI apps and agents",
+  "Content creators producing videos, scripts, and media",
+  "Startups building AI-powered products",
+  "Teams automating business workflows",
+  "Operators connecting AI tools into repeatable systems",
+];
+
+const howItWorks = [
+  ["Connect your system", "Integrate Aporto via MCP in minutes."],
+  ["Send requests normally", "Your app sends tasks like usual."],
+  ["Aporto routes everything", "Each request is automatically sent to the best model, tool, or skill."],
+  ["Get optimized results", "Higher quality, lower cost, better reliability."],
+];
+
+const engineSignals = [
+  "Best capability for the task",
+  "Fastest execution option",
+  "Most cost-efficient route",
+  "Fallback if a skill fails",
+  "Load balancing across providers",
+];
+
+const controlItems = [
+  "Pin specific skills or providers",
+  "Define routing rules per workflow",
+  "Control cost vs quality tradeoffs",
+  "View execution logs",
+  "Debug every request",
+  "Override routing decisions",
+];
+
+const workflowEvents = [
+  ["Request", "generate launch video from product screenshots"],
+  ["Intent", "video generation, voiceover, captions"],
+  ["Route", "Veo 3.1 primary, Sora 2 fallback"],
+  ["Optimize", "quality high, cost cap $0.42"],
+  ["Result", "artifact, logs, provider trace"],
+];
+
+const radarSkills = [
+  { label: "Flux", x: 18, y: 22 },
+  { label: "Sora 2", x: 72, y: 12 },
+  { label: "ElevenLabs", x: 85, y: 55 },
+  { label: "Claude", x: 65, y: 82 },
+  { label: "Apify", x: 12, y: 68 },
+  { label: "Veo 3.1", x: 42, y: 88 },
+  { label: "Recraft", x: 88, y: 30 },
+  { label: "DeepSeek", x: 28, y: 45 },
+];
+
+const chatMessages = [
+  { from: "agent", text: "Generate a product video from screenshots" },
+  { from: "aporto", text: "Routing \u2192 Veo 3.1 (720p, $0.12)" },
+  { from: "aporto", text: "\u2713 Video ready \u2014 4.2s" },
+  { from: "agent", text: "Now create a voiceover for it" },
+  { from: "aporto", text: "Routing \u2192 ElevenLabs TTS ($0.03)" },
+  { from: "aporto", text: "\u2713 Audio synced \u2014 1.1s" },
+];
+
+const comparisons = [
+  ["One provider", "Multi-provider routing"],
+  ["Manual scaling", "Automatic load balancing"],
+  ["Downtime risk", "Automatic failover"],
+  ["Hardcoded workflows", "Dynamic skill routing"],
+  ["Multiple integrations", "One MCP integration"],
+];
+
+const faqs = [
   {
-    title: "One router, many skills",
-    desc: "Connect Aporto once and your agent can use search, voice, images, messaging, data enrichment, APIs, and new skills as they are published.",
+    question: "What is Aporto in simple terms?",
+    answer: "Aporto is an AI execution layer that connects your apps, workflows, or agents to 1000+ AI skills. Instead of manually integrating tools, you send one request and Aporto routes it to the best skill automatically.",
   },
   {
-    title: "Best provider wins",
-    desc: "Routing can choose by capability, price, latency, and reliability, so your agent is not hardcoded to one vendor for every task.",
+    question: "Why do I need this if I can just use AI tools directly?",
+    answer: "Single tools do not scale. Without Aporto, you integrate each tool separately, decide manually what to use, handle failures yourself, and maintain multiple systems. With Aporto, one integration replaces many tools, skills are selected automatically, failures are handled for you, and your system scales without extra infrastructure.",
   },
   {
-    title: "Spend stays controlled",
-    desc: "Use one account, one key, and clear usage controls instead of stitching together billing across every tool your agent may need.",
+    question: "Do I lose control over what is happening?",
+    answer: "No. You gain control. Aporto can route automatically by default, follow your exact rules, or run fully deterministic workflows. You can override decisions, pin specific skills, and inspect execution logs.",
+  },
+  {
+    question: "What if Aporto chooses the wrong skill?",
+    answer: "You can prevent that with rules per task type, cost vs quality preferences, allowed skill groups, and fallback logic. Every execution is visible, traceable, and explainable.",
+  },
+  {
+    question: "Can I use Aporto without coding?",
+    answer: "Yes. Non-developers can create content workflows, automate repetitive tasks, generate media and scripts, and connect AI tools together. Developers can go deeper and build full AI systems.",
+  },
+  {
+    question: "Will this increase my costs?",
+    answer: "Usually no, and often the opposite. Aporto helps reduce cost by choosing cheaper skills when possible, avoiding unnecessary high-cost execution, reducing redundant integrations, and improving efficiency per request. You only pay for actual usage.",
+  },
+  {
+    question: "What makes Aporto different from other AI APIs?",
+    answer: "Most APIs give access to a single capability. Aporto gives you a network of AI skills, automatic routing between skills, the ability to combine skills into workflows, and scalable execution infrastructure.",
   },
 ];
 
-const publishingSteps = [
-  {
-    n: "01",
-    title: "Submit your skill",
-    desc: "Add the docs URL, API key, and a short description. No provider setup step for publishers.",
-  },
-  {
-    n: "02",
-    title: "AI review maps demand",
-    desc: "Review decides whether this becomes a new skill or another provider behind an existing high-demand skill.",
-  },
-  {
-    n: "03",
-    title: "Earn from agent calls",
-    desc: "Developers discover the skill through the MCP router and you get paid every time your provider is used.",
-  },
-];
+export default function NewLandingPage() {
+  const [activeCategory, setActiveCategory] = useState(0);
+  const current = skillCategories[activeCategory];
 
-export default function Home() {
   return (
-    <>
-      <div className="relative overflow-hidden">
-        <BackgroundCanvas />
+    <main className={styles.page}>
+      <header className={styles.nav}>
+        <Link href="/" className={styles.brand} aria-label="Aporto home">
+          <Image src="/logo.svg" alt="" width={28} height={28} priority />
+          <span>Aporto</span>
+        </Link>
 
-        <section className="relative px-6 pt-28 pb-18 md:pt-32 md:pb-24 min-h-[86vh] flex items-center">
-          <div className="absolute top-0 left-0 right-0 h-32 bg-gradient-to-b from-[#121212] to-transparent pointer-events-none z-10" />
-          <div className="absolute bottom-0 left-0 right-0 h-48 bg-gradient-to-t from-[#121212] to-transparent pointer-events-none z-10" />
+        <nav className={styles.navLinks} aria-label="Primary navigation">
+          <Link href="#features">Features</Link>
+          <Link href="https://docs.aporto.tech">Docs</Link>
+          <Link href="#ai">AI</Link>
+          <Link href="#pricing">Pricing</Link>
+        </nav>
 
-          <div className="relative z-20 max-w-6xl mx-auto w-full grid grid-cols-1 lg:grid-cols-[1.04fr_0.96fr] gap-12 lg:gap-16 items-center">
-            <div className="flex flex-col items-start">
-              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-[#6be195]/30 bg-[#6be195]/10 text-[#6be195] text-xs font-medium tracking-wide uppercase mb-7">
-                AI Skill Network - MCP Router - x402 payouts
-              </div>
-
-              <h1 className="text-[46px] sm:text-[62px] lg:text-[72px] leading-[1.04] font-normal mb-7 tracking-tight max-w-4xl">
-                The skill network where agents get tools and builders get paid.
-              </h1>
-              <p className="text-lg sm:text-xl text-[#b7b7b7] mb-8 font-medium leading-relaxed max-w-2xl">
-                Add Aporto&apos;s MCP router to any AI agent and route work across 1000+ skills and providers. Publish your own API or agent skill and earn for every successful call.
-              </p>
-
-              <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 w-full sm:w-auto">
-                <Link
-                  href="https://app.aporto.tech"
-                  data-mp-label="add_mcp_router"
-                  data-mp-section="hero"
-                  className="bg-[#6be195] text-[#121212] font-medium px-6 py-3.5 rounded-[7px] hover:bg-[#5cd487] transition-colors text-center shadow-[0_0_15px_rgba(107,225,149,0.3)] hover:shadow-[0_0_20px_rgba(107,225,149,0.5)]"
-                >
-                  Add MCP router
-                </Link>
-                <Link
-                  href="/publishers"
-                  data-mp-label="publish_skill"
-                  data-mp-section="hero"
-                  className="bg-transparent text-white font-medium px-6 py-3.5 rounded-[7px] border border-white/20 hover:bg-white/10 transition-colors text-center"
-                >
-                  Publish a skill
-                </Link>
-              </div>
-
-              <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mt-10 w-full max-w-3xl">
-                {networkStats.map((stat) => (
-                  <div key={stat.label} className="rounded-[8px] border border-[#ffffff14] bg-[#151515]/80 px-4 py-4">
-                    <p className="text-[#6be195] text-2xl font-semibold leading-none">{stat.value}</p>
-                    <p className="text-[#a0a0a0] text-xs leading-snug mt-2">{stat.label}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            <div className="rounded-[8px] border border-[#ffffff14] bg-[#151515]/90 shadow-[0_20px_80px_rgba(0,0,0,0.35)] overflow-hidden">
-              <div className="flex items-center justify-between border-b border-[#ffffff10] px-5 py-4">
-                <div>
-                  <p className="text-xs uppercase tracking-widest text-[#ffffff45]">Aporto MCP Router</p>
-                  <p className="text-sm text-[#d7d7d7] mt-1">Drop one server into your agent stack.</p>
-                </div>
-                <div className="h-2.5 w-2.5 rounded-full bg-[#6be195] shadow-[0_0_14px_rgba(107,225,149,0.75)]" />
-              </div>
-              <div className="p-5 font-mono text-[12px] sm:text-[13px] leading-relaxed overflow-x-auto">
-                <pre className="text-[#a0a0a0]">
-                  <code>{`{
-  "mcpServers": {
-    "aporto": {
-      "url": "https://app.aporto.tech/api/mcp",
-      "headers": {
-        "Authorization": "Bearer $APORTO_KEY"
-      }
-    }
-  }
-}`}</code>
-                </pre>
-              </div>
-              <div className="grid grid-cols-1 sm:grid-cols-3 border-t border-[#ffffff10]">
-                {["Discover skills", "Route to provider", "Settle payment"].map((item) => (
-                  <div key={item} className="px-5 py-4 border-t sm:border-t-0 sm:border-l first:border-l-0 border-[#ffffff10]">
-                    <p className="text-sm font-medium text-white">{item}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </section>
-      </div>
-
-      <section className="relative px-6 py-24 bg-[#121212] z-10">
-        <div className="max-w-6xl mx-auto">
-          <div className="max-w-3xl mb-14">
-            <p className="text-[13px] text-[#ffffff40] uppercase tracking-widest mb-4">The marketplace shift</p>
-            <h2 className="text-[36px] sm:text-[44px] leading-[1.15] font-normal">
-              YouTube gave creators distribution. Uber gave drivers demand.{" "}
-              <span className="text-[#6be195]">Aporto gives API builders agent demand.</span>
-            </h2>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
-            <div className="rounded-[8px] bg-[#1a1a1a] border border-[#ffffff10] p-7">
-              <p className="text-[#ffffff45] text-xs uppercase tracking-widest mb-4">For agent developers</p>
-              <h3 className="text-xl font-semibold mb-3">Stop integrating tools one by one.</h3>
-              <p className="text-[#a0a0a0] text-sm leading-relaxed">
-                One MCP router gives your agent access to a growing skill network with routing, usage controls, and payment handled in one place.
-              </p>
-            </div>
-            <div className="rounded-[8px] bg-[#1a1a1a] border border-[#ffffff10] p-7">
-              <p className="text-[#ffffff45] text-xs uppercase tracking-widest mb-4">For skill publishers</p>
-              <h3 className="text-xl font-semibold mb-3">Turn your API into a paid channel.</h3>
-              <p className="text-[#a0a0a0] text-sm leading-relaxed">
-                Publish a useful capability once. Agents discover it through intent, not through ads, sales calls, or integration docs alone.
-              </p>
-            </div>
-            <div className="rounded-[8px] bg-[#1a1a1a] border border-[#ffffff10] p-7">
-              <p className="text-[#ffffff45] text-xs uppercase tracking-widest mb-4">For the network</p>
-              <h3 className="text-xl font-semibold mb-3">Every call makes the market smarter.</h3>
-              <p className="text-[#a0a0a0] text-sm leading-relaxed">
-                More agents create more demand. More publishers create more supply. Routing learns which providers actually deliver.
-              </p>
-            </div>
-          </div>
+        <div className={styles.navActions}>
+          <Link href="/login" className={styles.loginLink}>Log in</Link>
+          <Link href="/register" className={styles.navButton}>Get started</Link>
         </div>
-      </section>
+      </header>
 
-      <section className="relative px-6 py-24 bg-[#0f0f0f] z-10 border-t border-[#ffffff08]">
-        <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-[0.9fr_1.1fr] gap-14 items-start">
-          <div>
-            <p className="text-[13px] text-[#ffffff40] uppercase tracking-widest mb-4">For developers</p>
-            <h2 className="text-[36px] sm:text-[44px] leading-[1.15] font-normal mb-5">
-              Add the router. Give your agent a full tool economy.
-            </h2>
-            <p className="text-[#a0a0a0] leading-relaxed mb-7">
-              Aporto is the MCP layer between your agent and the skills it needs. Your agent asks for a capability; the network finds the right skill and provider.
-            </p>
-            <Link
-              href="https://app.aporto.tech"
-              data-mp-label="developers_add_router"
-              data-mp-section="developers_section"
-              className="inline-flex bg-[#6be195] text-[#121212] font-medium px-6 py-3.5 rounded-[7px] hover:bg-[#5cd487] transition-colors"
-            >
-              Connect your agent
-            </Link>
-          </div>
+      <section className={styles.hero}>
+        <div className={styles.heroAura} aria-hidden="true" />
+        <div className={styles.heroGrid} aria-hidden="true" />
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
-            {routerBenefits.map((benefit) => (
-              <div key={benefit.title} className="rounded-[8px] bg-[#1a1a1a] border border-[#ffffff10] p-7">
-                <h3 className="text-lg font-semibold mb-3">{benefit.title}</h3>
-                <p className="text-[#a0a0a0] text-sm leading-relaxed">{benefit.desc}</p>
-              </div>
+        <div className={styles.announcement}>
+          <span className={styles.statusDot} />
+          MCP router for production AI agents
+        </div>
+
+        <h1>Turn Any AI Agent Into a Full AI Workforce</h1>
+        <p className={styles.heroCopy}>
+          One MCP integration connects your AI agent to 1000+ skills with automatic routing, failover, and load balancing.
+        </p>
+
+        <div className={styles.heroActions}>
+          <Link href="/register" className={styles.primaryCta}>Get started</Link>
+          <Link href="https://docs.aporto.tech" className={styles.secondaryCta}>Documentation</Link>
+        </div>
+
+        <div className={styles.heroShowcase}>
+          <div className={styles.radar} aria-label="Skill discovery radar">
+            <div className={styles.radarRings}>
+              <div className={styles.radarRing} />
+              <div className={styles.radarRing} />
+              <div className={styles.radarRing} />
+            </div>
+            <div className={styles.radarSweep} />
+            <div className={styles.radarCenter}>
+              <Image src="/logo.svg" alt="" width={24} height={24} />
+            </div>
+            {radarSkills.map((skill, i) => (
+              <span
+                key={skill.label}
+                className={styles.radarDot}
+                style={{
+                  "--dot-x": `${skill.x}%`,
+                  "--dot-y": `${skill.y}%`,
+                  "--dot-delay": `${i * 0.5}s`,
+                } as CSSProperties}
+              >
+                {skill.label}
+              </span>
             ))}
           </div>
-        </div>
-      </section>
 
-      <section className="relative px-6 py-24 bg-[#121212] z-10 border-t border-[#ffffff08]">
-        <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-14 items-start">
-          <div>
-            <p className="text-[13px] text-[#ffffff40] uppercase tracking-widest mb-4">For publishers</p>
-            <h2 className="text-[36px] sm:text-[44px] leading-[1.15] font-normal mb-5">
-              Built a useful agent or API?{" "}
-              <span className="text-[#6be195]">Publish it as a skill.</span>
-            </h2>
-            <p className="text-[#a0a0a0] leading-relaxed mb-7">
-              Developers see a skill. The network can handle whether your submission becomes a new skill or a provider behind an existing skill. You focus on the capability and the payout.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4">
-              <Link
-                href="/publishers"
-                data-mp-label="publishers_publish_skill"
-                data-mp-section="publishers_section"
-                className="bg-[#6be195] text-[#121212] font-medium px-6 py-3.5 rounded-[7px] hover:bg-[#5cd487] transition-colors text-center"
-              >
-                Publish your skill
-              </Link>
-              <Link
-                href="https://docs.aporto.tech"
-                data-mp-label="publishers_docs"
-                data-mp-section="publishers_section"
-                className="bg-transparent text-white font-medium px-6 py-3.5 rounded-[7px] border border-white/20 hover:bg-white/10 transition-colors text-center"
-              >
-                Read docs
-              </Link>
+          <div className={styles.chatDemo} aria-label="Agent-Aporto conversation demo">
+            <div className={styles.chatHeader}>
+              <span className={styles.chatDot} />
+              <span>Live routing</span>
             </div>
-          </div>
-
-          <div className="rounded-[8px] bg-[#1a1a1a] border border-[#ffffff10] p-6 sm:p-8">
-            <p className="text-[#ffffff45] text-xs uppercase tracking-widest mb-6">Publishing flow</p>
-            <div className="flex flex-col gap-6">
-              {publishingSteps.map((step) => (
-                <div key={step.n} className="grid grid-cols-[52px_1fr] gap-4">
-                  <div className="w-11 h-11 rounded-[8px] bg-[#6be195]/10 border border-[#6be195]/20 flex items-center justify-center text-[#6be195] text-xs font-mono">
-                    {step.n}
-                  </div>
-                  <div>
-                    <h3 className="font-semibold mb-1">{step.title}</h3>
-                    <p className="text-[#a0a0a0] text-sm leading-relaxed">{step.desc}</p>
-                  </div>
+            <div className={styles.chatMessages} style={{ "--cycle-duration": "14s" } as CSSProperties}>
+              {chatMessages.map((msg, i) => (
+                <div
+                  key={`${msg.from}-${i}`}
+                  className={`${styles.chatBubble} ${msg.from === "aporto" ? styles.chatAporto : styles.chatAgent}`}
+                  style={{ "--bubble-delay": `${i * 1.4}s`, "--cycle-duration": "14s" } as CSSProperties}
+                >
+                  <small>{msg.from === "aporto" ? "Aporto" : "Agent"}</small>
+                  <p>{msg.text}</p>
                 </div>
               ))}
+              <div className={styles.typingIndicator} style={{ "--bubble-delay": "8.4s", "--cycle-duration": "14s" } as CSSProperties}>
+                <span /><span /><span />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div className={styles.metrics}>
+          <div className={styles.metricCard}>
+            <strong>1000+</strong>
+            <span>skills connected</span>
+          </div>
+          <div className={styles.metricCard}>
+            <strong>&lt;200ms</strong>
+            <span>routing latency</span>
+          </div>
+          <div className={styles.metricCard}>
+            <strong>99.9%</strong>
+            <span>uptime</span>
+          </div>
+        </div>
+      </section>
+
+      <section id="features" className={styles.integrateSection}>
+        <div className={styles.sectionIntro}>
+          <span>Integrate this morning</span>
+          <h2>A simple, elegant interface so you can start using skills in minutes.</h2>
+          <p>It fits right into your code with SDKs for your favorite programming languages.</p>
+        </div>
+
+        <div className={styles.skillExplorer}>
+          <div className={styles.tabs} role="tablist" aria-label="Skill categories">
+            {skillCategories.map((category, index) => (
+              <button
+                key={category.label}
+                type="button"
+                role="tab"
+                aria-selected={activeCategory === index}
+                className={activeCategory === index ? styles.activeTab : undefined}
+                onClick={() => setActiveCategory(index)}
+              >
+                <span>{category.label}</span>
+                <small>{category.count}</small>
+              </button>
+            ))}
+          </div>
+
+          <div className={styles.skillPanel}>
+            <div className={styles.skillList}>
+              <div>
+                <span className={styles.panelKicker}>{current.count}</span>
+                <h3>{current.description}</h3>
+              </div>
+              <div className={styles.skillChips}>
+                {current.skills.map((skill) => (
+                  <span key={skill}>{skill}</span>
+                ))}
+              </div>
+            </div>
+
+            <div className={styles.codeCard}>
+              <div className={styles.codeHeader}>
+                <span>mcp-client.ts</span>
+                <span>TypeScript</span>
+              </div>
+              <pre>{`import { Aporto } from "@aporto-tech/sdk";
+
+const aporto = new Aporto({
+  apiKey: process.env.APORTO_API_KEY,
+});
+
+const result = await ${current.command};
+
+console.log(result.artifact?.url);`}</pre>
             </div>
           </div>
         </div>
       </section>
 
-      <section className="relative px-6 py-24 bg-[#0f0f0f] z-10 border-t border-[#ffffff08]">
-        <div className="max-w-6xl mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-            {[
-              "Agents create demand",
-              "Demand brings publishers",
-              "Publishers add skills",
-              "Better skills bring more agents",
-            ].map((item, index) => (
-              <div key={item} className="rounded-[8px] border border-[#ffffff10] bg-[#171717] p-6">
-                <p className="text-[#6be195] text-sm font-mono mb-5">0{index + 1}</p>
-                <p className="text-lg font-semibold leading-snug">{item}</p>
-              </div>
-            ))}
-          </div>
+      <section id="ai" className={styles.audienceSection}>
+        <div className={styles.sectionIntro}>
+          <span>Who is this for?</span>
+          <h2>Aporto is built for anyone working with AI.</h2>
+          <p>If AI is part of your workflow, Aporto makes it faster, cheaper, and more powerful.</p>
+        </div>
+        <div className={styles.audienceGrid}>
+          {audienceCards.map((item) => (
+            <article key={item}>
+              <span />
+              <h3>{item}</h3>
+            </article>
+          ))}
         </div>
       </section>
 
-      <section className="relative px-6 py-28 bg-[#121212] flex flex-col items-center z-10">
-        <div className="max-w-3xl mx-auto text-center flex flex-col items-center gap-6">
-          <h2 className="text-[38px] sm:text-[48px] leading-[1.15] font-normal">
-            Join the network before agents choose their default router.
-          </h2>
-          <p className="text-[#a0a0a0] text-lg">
-            Connect an agent to the skill network, or publish the skill that agents should call next.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 mt-2 w-full sm:w-auto">
-            <Link
-              href="https://app.aporto.tech"
-              data-mp-label="add_mcp_router_bottom"
-              data-mp-section="bottom_cta"
-              className="bg-[#6be195] text-[#121212] font-medium px-6 py-3.5 rounded-[7px] hover:bg-[#5cd487] transition-colors text-center shadow-[0_0_15px_rgba(107,225,149,0.3)]"
-            >
-              Add MCP router
-            </Link>
-            <Link
-              href="/publishers"
-              data-mp-label="publish_skill_bottom"
-              data-mp-section="bottom_cta"
-              className="bg-transparent text-white font-medium px-6 py-3.5 rounded-[7px] border border-white/20 hover:bg-white/10 transition-colors text-center"
-            >
-              Publish a skill
-            </Link>
-          </div>
+      <section className={styles.processSection}>
+        <div className={styles.sectionIntro}>
+          <span>How it works</span>
+          <h2>Four steps from normal task requests to optimized execution.</h2>
+        </div>
+        <div className={styles.processGrid}>
+          {howItWorks.map(([title, body], index) => (
+            <article key={title}>
+              <span>{String(index + 1).padStart(2, "0")}</span>
+              <h3>{title}</h3>
+              <p>{body}</p>
+            </article>
+          ))}
         </div>
       </section>
-    </>
+
+      <section className={styles.workflowSection}>
+        <div className={styles.workflowCopy}>
+          <span>Workflow layer</span>
+          <h2>One request can become a routed multi-skill execution.</h2>
+          <p>Instead of wiring tools one by one, Aporto turns intent into a traceable workflow with routing, fallback, and cost controls.</p>
+        </div>
+        <div className={styles.workflowBoard} aria-label="Workflow execution timeline">
+          {workflowEvents.map(([label, body], index) => (
+            <article key={label} style={{ "--step-index": index } as CSSProperties}>
+              <span>{label}</span>
+              <p>{body}</p>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section className={styles.engineSection}>
+        <div className={styles.engineCard}>
+          <div>
+            <span className={styles.panelKicker}>Smart Execution Engine</span>
+            <h2>Every request is matched to the best skill in real time.</h2>
+          </div>
+          <ul>
+            {engineSignals.map((item) => (
+              <li key={item}>{item}</li>
+            ))}
+          </ul>
+        </div>
+
+        <div className={styles.engineCard}>
+          <div>
+            <span className={styles.panelKicker}>Full control included</span>
+            <h2>Aporto is not a black box.</h2>
+            <p>You can define the routing behavior that fits each workflow.</p>
+          </div>
+          <ul>
+            {controlItems.map((item) => (
+              <li key={item}>{item}</li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      <section className={styles.comparisonSection}>
+        <div className={styles.sectionIntro}>
+          <span>Why Aporto instead of direct APIs</span>
+          <h2>One integration replaces brittle provider-by-provider plumbing.</h2>
+        </div>
+        <div className={styles.comparisonTable}>
+          <div className={styles.tableHead}>
+            <span>Direct API</span>
+            <span>Aporto</span>
+          </div>
+          {comparisons.map(([direct, aporto]) => (
+            <div className={styles.tableRow} key={direct}>
+              <span>{direct}</span>
+              <span>{aporto}</span>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section className={styles.faqSection}>
+        <div className={styles.sectionIntro}>
+          <span>FAQ</span>
+          <h2>Answers for builders, creators, and teams.</h2>
+        </div>
+        <div className={styles.faqList}>
+          {faqs.map((faq) => (
+            <details key={faq.question}>
+              <summary>{faq.question}</summary>
+              <p>{faq.answer}</p>
+            </details>
+          ))}
+        </div>
+      </section>
+
+      <section id="pricing" className={styles.pricingSection}>
+        <div className={styles.pricingCard}>
+          <span>Pricing note</span>
+          <h2>Free to start. Pay only for routed usage.</h2>
+          <div className={styles.pricingBullets}>
+            <span>No setup fees</span>
+            <span>No long-term contracts</span>
+            <span>Scale as you grow</span>
+          </div>
+          <p>Aporto is not a tool. It is the execution layer between your product and 1000+ AI capabilities.</p>
+          <Link href="/register" className={styles.primaryCta}>Start Building</Link>
+        </div>
+      </section>
+
+      <footer className={styles.footer}>
+        <div className={styles.footerBrand}>
+          <Image src="/logo.svg" alt="" width={28} height={28} />
+          <span>Aporto</span>
+        </div>
+        <div className={styles.footerColumns}>
+          <div>
+            <strong>Product</strong>
+            <Link href="#features">Features</Link>
+            <Link href="#ai">AI</Link>
+            <Link href="#pricing">Pricing</Link>
+          </div>
+          <div>
+            <strong>Developers</strong>
+            <Link href="https://docs.aporto.tech">Documentation</Link>
+            <Link href="/services">Skills</Link>
+            <Link href="/login">Dashboard</Link>
+          </div>
+          <div>
+            <strong>Company</strong>
+            <Link href="/privacy">Privacy</Link>
+            <Link href="/terms">Terms</Link>
+            <Link href="/register">Get started</Link>
+          </div>
+        </div>
+      </footer>
+    </main>
   );
 }
