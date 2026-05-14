@@ -27,12 +27,12 @@ const variantCopy = {
     badge: "MCP skill network",
   },
   discount: {
-    eyebrow: "Nano Banana at Aporto pricing",
-    title: "Nano Banana from Claude Code, plus 1000+ skills at Aporto prices.",
-    body: "Use Aporto MCP to run Nano Banana through an active provider route with a lower per-request price and the same agent workflow.",
-    primaryCta: "Get the discounted route",
-    secondaryCta: "Compare pricing",
-    badge: "Price test",
+    eyebrow: "Discounted AI skills for Claude Code",
+    title: "Nano Banana up to 60% cheaper, plus 1000+ skills through Aporto MCP.",
+    body: "Run Nano Banana from Claude Code at Aporto pricing, then use the same MCP router for video, scraping, search, audio, and automation skills with usage-based pricing.",
+    primaryCta: "Get Aporto MCP pricing",
+    secondaryCta: "See skill network",
+    badge: "Discounted route",
   },
 } satisfies Record<LandingVariant, {
   eyebrow: string;
@@ -61,10 +61,10 @@ export default function NanoBananaLanding({ variant }: NanoBananaLandingProps) {
   const isDiscount = variant === "discount";
   const networkIntro = isDiscount ? {
     kicker: "One MCP router, 1000+ skills",
-    title: "Nano Banana is the first hook. Aporto gives Claude Code the whole skill network.",
-    body: "The same MCP connection can route image, video, scraping, search, audio, and automation requests. Nano Banana gets people in; the rest of the catalog makes Aporto stick.",
-    leadTitle: "Nano Banana now works from Claude Code through Aporto MCP, with launch pricing.",
-    leadBody: `Start with the clear offer: ${pricing.aporto}/request through Aporto, ${pricing.retail}/request retail, save ${pricing.savings}. Then show that the same setup unlocks 1000+ more paid skills.`,
+    title: "The discount gets attention. The skill network keeps users.",
+    body: "Nano Banana is the first price-led offer. Aporto should quickly show that the same MCP setup gives Claude Code access to a larger catalog of paid skills at practical per-request prices.",
+    leadTitle: "Start with Nano Banana at launch pricing, then route the next agent task to the right paid skill.",
+    leadBody: `${pricing.aporto}/request through Aporto versus ${pricing.retail}/request retail is the clear reel message. The landing page then expands the value: one MCP connection can keep routing future work across 1000+ skills.`,
   } : {
     kicker: "One MCP setup, many agent skills",
     title: "Start with image generation. Keep the same router for the rest of the agent workflow.",
