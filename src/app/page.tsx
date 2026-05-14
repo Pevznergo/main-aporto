@@ -199,8 +199,8 @@ export default function NewLandingPage() {
         </nav>
 
         <div className={styles.navActions}>
-          <Link href="/login" className={styles.loginLink}>Log in</Link>
-          <Link href="/register" className={styles.navButton}>Get started</Link>
+          <Link href="https://app.aporto.tech/login" className={styles.loginLink}>Log in</Link>
+          <Link href="https://app.aporto.tech/register" className={styles.navButton}>Get started</Link>
         </div>
       </header>
 
@@ -219,7 +219,7 @@ export default function NewLandingPage() {
         </p>
 
         <div className={styles.heroActions}>
-          <Link href="/register" className={styles.primaryCta}>Get started</Link>
+          <Link href="https://app.aporto.tech/register" className={styles.primaryCta}>Get started</Link>
           <Link href="https://docs.aporto.tech" className={styles.secondaryCta}>Documentation</Link>
         </div>
 
@@ -463,7 +463,7 @@ console.log(result.artifact?.url);`}</pre>
             <span>Scale as you grow</span>
           </div>
           <p>Aporto is not a tool. It is the execution layer between your product and 1000+ AI capabilities.</p>
-          <Link href="/register" className={styles.primaryCta}>Start Building</Link>
+          <Link href="https://app.aporto.tech/register" className={styles.primaryCta}>Start Building</Link>
         </div>
       </section>
 
@@ -483,13 +483,13 @@ console.log(result.artifact?.url);`}</pre>
             <strong>Developers</strong>
             <Link href="https://docs.aporto.tech">Documentation</Link>
             <Link href="/services">Skills</Link>
-            <Link href="/login">Dashboard</Link>
+            <Link href="https://app.aporto.tech/login">Dashboard</Link>
           </div>
           <div>
             <strong>Company</strong>
             <Link href="/privacy">Privacy</Link>
             <Link href="/terms">Terms</Link>
-            <Link href="/register">Get started</Link>
+            <Link href="https://app.aporto.tech/register">Get started</Link>
           </div>
         </div>
       </footer>
