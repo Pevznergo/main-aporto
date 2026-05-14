@@ -49,14 +49,29 @@ const setupSteps = [
   ["03", "Get an image URL", "The completed image returns as an artifact URL with provider and cost traceability."],
 ];
 
-const prompts = [
-  "Generate a cinematic product hero image for a black AI hardware device on a studio desk.",
-  "Create three mobile app onboarding illustrations in a clean editorial style.",
-  "Turn this landing page copy into a launch visual for social media.",
+const networkSkills = [
+  ["Image generation", "Nano Banana, Flux, GPT Images, Ideogram, Recraft"],
+  ["Video generation", "Sora, Veo, Kling, Runway, Seedance"],
+  ["Search and scraping", "LinkedIn, web search, SERP, company lookup, Apify actors"],
+  ["Audio and speech", "ElevenLabs TTS, sound effects, voice workflows"],
 ];
 
 export default function NanoBananaLanding({ variant }: NanoBananaLandingProps) {
   const copy = variantCopy[variant];
+  const isDiscount = variant === "discount";
+  const networkIntro = isDiscount ? {
+    kicker: "One MCP router, 1000+ skills",
+    title: "Nano Banana is the first hook. Aporto gives Claude Code the whole skill network.",
+    body: "The same MCP connection can route image, video, scraping, search, audio, and automation requests. Nano Banana gets people in; the rest of the catalog makes Aporto stick.",
+    leadTitle: "Nano Banana now works from Claude Code through Aporto MCP, with launch pricing.",
+    leadBody: `Start with the clear offer: ${pricing.aporto}/request through Aporto, ${pricing.retail}/request retail, save ${pricing.savings}. Then show that the same setup unlocks 1000+ more paid skills.`,
+  } : {
+    kicker: "One MCP setup, many agent skills",
+    title: "Nano Banana is one capability. Aporto turns Claude Code into a multi-skill agent.",
+    body: "After users connect Aporto MCP for image generation, they can call the same router for video, scraping, search, audio, and other paid provider skills.",
+    leadTitle: "Generate images first, then keep the same MCP connection for the rest of the workflow.",
+    leadBody: "The capability message should not stop at image generation. The stronger pitch is that Claude Code can call Nano Banana today and then use 1000+ more skills through the same Aporto router.",
+  };
 
   return (
     <main className={styles.page}>
@@ -156,20 +171,28 @@ export default function NanoBananaLanding({ variant }: NanoBananaLandingProps) {
         </div>
       </section>
 
-      <section className={styles.demoSection}>
-        <div className={styles.demoCopy}>
-          <span>Prompt examples</span>
-          <h2>Prompts people can try immediately after connecting Aporto.</h2>
-          <p>These are intentionally simple. The goal is to remove blank-page friction after the reel click.</p>
+      <section className={styles.networkSection}>
+        <div className={styles.sectionIntro}>
+          <span>{networkIntro.kicker}</span>
+          <h2>{networkIntro.title}</h2>
+          <p>{networkIntro.body}</p>
         </div>
 
-        <div className={styles.promptList}>
-          {prompts.map((prompt) => (
-            <article key={prompt}>
-              <span>Prompt</span>
-              <p>{prompt}</p>
-            </article>
-          ))}
+        <div className={styles.networkGrid}>
+          <article className={styles.networkLead}>
+            <span>Campaign angle</span>
+            <h3>{networkIntro.leadTitle}</h3>
+            <p>{networkIntro.leadBody}</p>
+          </article>
+
+          <div className={styles.networkCards}>
+            {networkSkills.map(([title, body]) => (
+              <article key={title}>
+                <span>{title}</span>
+                <p>{body}</p>
+              </article>
+            ))}
+          </div>
         </div>
       </section>
 

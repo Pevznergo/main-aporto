@@ -264,6 +264,7 @@
 
 .setupSection,
 .demoSection,
+.networkSection,
 .pricingSection {
   width: min(1120px, calc(100% - 32px));
   margin: 0 auto;
@@ -371,6 +372,74 @@
   font-family: var(--font-geist-mono), monospace;
 }
 
+.networkGrid {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(420px, 1.1fr);
+  gap: 1px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.networkLead,
+.networkCards article {
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.035), rgba(255, 255, 255, 0.012)),
+    #080809;
+}
+
+.networkLead {
+  min-height: 430px;
+  padding: 34px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.networkLead span,
+.networkCards span {
+  display: inline-flex;
+  color: #6be195;
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 12px;
+}
+
+.networkLead h3 {
+  max-width: 460px;
+  margin: 52px 0 0;
+  color: #ffffff;
+  font-size: clamp(28px, 3.8vw, 42px);
+  line-height: 1.06;
+  font-weight: 610;
+}
+
+.networkLead p {
+  max-width: 520px;
+  margin: 24px 0 0;
+  color: #a8a8b1;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.networkCards {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1px;
+}
+
+.networkCards article {
+  min-height: 214px;
+  padding: 28px;
+}
+
+.networkCards p {
+  margin: 42px 0 0;
+  color: #d8d8de;
+  font-size: 18px;
+  line-height: 1.45;
+}
+
 .pricingCard {
   padding: clamp(28px, 5vw, 54px);
   border: 1px solid rgba(107, 225, 149, 0.22);
@@ -387,6 +456,10 @@
 @media (max-width: 900px) {
   .hero,
   .demoSection {
+    grid-template-columns: 1fr;
+  }
+
+  .networkGrid {
     grid-template-columns: 1fr;
   }
 
@@ -407,6 +480,7 @@
   .hero,
   .setupSection,
   .demoSection,
+  .networkSection,
   .pricingSection {
     width: min(100% - 24px, 1120px);
   }
@@ -427,5 +501,13 @@
 
   .priceStack {
     grid-template-columns: 1fr;
+  }
+
+  .networkCards {
+    grid-template-columns: 1fr;
+  }
+
+  .networkLead {
+    min-height: auto;
   }
 }
