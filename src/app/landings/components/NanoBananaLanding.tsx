@@ -19,16 +19,16 @@ const pricing = {
 
 const variantCopy = {
   capability: {
-    eyebrow: "Nano Banana for Claude Code",
-    title: "Generate images from Claude Code with one MCP call.",
-    body: "Connect Aporto once, ask your coding agent for an image, and route the request to Nano Banana without wiring another provider API.",
-    primaryCta: "Run Nano Banana in Claude Code",
-    secondaryCta: "View setup",
-    badge: "Capability test",
+    eyebrow: "Aporto MCP for Claude Code",
+    title: "Give Claude Code Nano Banana and 1000+ AI skills.",
+    body: "One Aporto MCP connection lets Claude Code generate images with Nano Banana, then call video, scraping, search, audio, and automation skills through the same router.",
+    primaryCta: "Add Aporto MCP to Claude Code",
+    secondaryCta: "See what it unlocks",
+    badge: "MCP skill network",
   },
   discount: {
     eyebrow: "Nano Banana at Aporto pricing",
-    title: "Nano Banana from Claude Code, up to 60% cheaper than retail.",
+    title: "Nano Banana from Claude Code, plus 1000+ skills at Aporto prices.",
     body: "Use Aporto MCP to run Nano Banana through an active provider route with a lower per-request price and the same agent workflow.",
     primaryCta: "Get the discounted route",
     secondaryCta: "Compare pricing",
@@ -67,10 +67,10 @@ export default function NanoBananaLanding({ variant }: NanoBananaLandingProps) {
     leadBody: `Start with the clear offer: ${pricing.aporto}/request through Aporto, ${pricing.retail}/request retail, save ${pricing.savings}. Then show that the same setup unlocks 1000+ more paid skills.`,
   } : {
     kicker: "One MCP setup, many agent skills",
-    title: "Nano Banana is one capability. Aporto turns Claude Code into a multi-skill agent.",
-    body: "After users connect Aporto MCP for image generation, they can call the same router for video, scraping, search, audio, and other paid provider skills.",
-    leadTitle: "Generate images first, then keep the same MCP connection for the rest of the workflow.",
-    leadBody: "The capability message should not stop at image generation. The stronger pitch is that Claude Code can call Nano Banana today and then use 1000+ more skills through the same Aporto router.",
+    title: "Start with image generation. Keep the same router for the rest of the agent workflow.",
+    body: "Nano Banana is the visible demo, but the product is broader: Claude Code gets one MCP path into paid AI capabilities that usually require separate APIs.",
+    leadTitle: "Claude Code can generate the image, scrape the reference data, search the web, and produce media from one Aporto connection.",
+    leadBody: "The strongest capability message is not just that Nano Banana works. It is that Aporto makes Claude Code feel like it has an expandable toolbelt of 1000+ skills.",
   };
 
   return (
