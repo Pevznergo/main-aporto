@@ -226,7 +226,7 @@ export default function NewLandingPage() {
 
         <h1>Turn Any AI Agent Into a Full AI Workforce</h1>
         <p className={styles.heroCopy}>
-          One CLI command or MCP integration connects your AI agent to 1000+ skills with automatic routing, failover, and load balancing.
+          One CLI command connects your AI agent to 1000+ skills with automatic routing, failover, and load balancing.
         </p>
 
         <div className={styles.heroActions}>
