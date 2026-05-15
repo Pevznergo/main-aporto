@@ -11,6 +11,7 @@ type SkillCategory = {
   count: string;
   description: string;
   command: string;
+  cliCommand: string;
   skills: string[];
 };
 
@@ -20,6 +21,7 @@ const skillCategories: SkillCategory[] = [
     count: "180+ skills",
     description: "Generate, edit, upscale, reframe, remove backgrounds, and route prompts across visual models.",
     command: "aporto.runSkill({ intent: 'Nano Banana 2 1K image generation', params: { prompt } })",
+    cliCommand: "aporto run \"generate product image\" \\\n  --param prompt=\"a cat on the moon\" \\\n  --wait",
     skills: ["Nano Banana", "Nano Banana 2", "Nano Banana 2 Pro", "Flux", "GPT Images", "Ideogram", "Recraft", "Qwen Image", "Seedream", "Topaz Upscale"],
   },
   {
@@ -27,6 +29,7 @@ const skillCategories: SkillCategory[] = [
     count: "140+ skills",
     description: "Create video from text, images, references, speech, and motion controls with automatic polling.",
     command: "aporto.runSkill({ intent: 'Sora 2 fast text to video', params: { prompt } })",
+    cliCommand: "aporto run \"Sora 2 text to video\" \\\n  --param prompt=\"product launch teaser\" \\\n  --wait",
     skills: ["Sora 2 Fast", "Sora 2 Stable", "Veo 3.1 720P", "Kling 2.6", "Runway", "Wan 2.7", "Seedance", "Hailuo", "Lip Sync", "Video Upscale"],
   },
   {
@@ -34,6 +37,7 @@ const skillCategories: SkillCategory[] = [
     count: "220+ skills",
     description: "Find, scrape, enrich, and verify web data through managed providers and structured outputs.",
     command: "aporto.runSkill({ intent: 'find LinkedIn profiles for AI agency founders' })",
+    cliCommand: "aporto run \"find LinkedIn profiles\" \\\n  --param query=\"AI agency founders\" \\\n  --wait",
     skills: ["Web Search", "AI Research", "LinkedIn Profiles", "LinkedIn Jobs", "Apify Actors", "Company Lookup", "Website Extraction", "SERP Search"],
   },
   {
@@ -41,6 +45,7 @@ const skillCategories: SkillCategory[] = [
     count: "95+ skills",
     description: "Generate speech, dialogue, sound effects, music, transcription, and voice workflows.",
     command: "aporto.runSkill({ intent: 'ElevenLabs text to speech', params: { text } })",
+    cliCommand: "aporto run \"text to speech\" \\\n  --param text=\"Hello from Aporto\" \\\n  --wait",
     skills: ["ElevenLabs TTS", "Sound Effects", "Dialogue Audio", "Suno Music", "Speech to Text", "Voice Cloning", "Audio Cleanup", "Podcast Clips"],
   },
   {
@@ -48,6 +53,7 @@ const skillCategories: SkillCategory[] = [
     count: "400+ models",
     description: "Route reasoning and chat workloads across model families from one interface.",
     command: "aporto.chat({ model: 'openai/gpt-4o-mini', messages })",
+    cliCommand: "# Use OpenAI-compatible endpoint\ncurl https://api.aporto.tech/v1/chat/completions \\\n  -H \"Authorization: Bearer $APORTO_API_KEY\" \\\n  -d '{\"model\":\"openai/gpt-4o-mini\",\"messages\":[...]}'",
     skills: ["OpenAI", "Claude", "Gemini", "DeepSeek", "Grok", "Llama", "Qwen", "Mistral", "Perplexity", "400+ models"],
   },
   {
@@ -55,6 +61,7 @@ const skillCategories: SkillCategory[] = [
     count: "120+ skills",
     description: "Let agents trigger repeatable business workflows without custom provider glue.",
     command: "aporto.runSkill({ intent: 'automate lead enrichment workflow', params })",
+    cliCommand: "aporto run \"lead enrichment\" \\\n  --param company=\"Acme Inc\" \\\n  --wait",
     skills: ["Lead Enrichment", "CRM Updates", "Email Workflows", "Form Filling", "Data Cleanup", "Research Agents", "Browser Actions"],
   },
   {
@@ -62,6 +69,7 @@ const skillCategories: SkillCategory[] = [
     count: "80+ skills",
     description: "Parse, summarize, classify, and transform documents with traceable execution logs.",
     command: "aporto.runSkill({ intent: 'extract invoice fields from PDF', params: { fileUrl } })",
+    cliCommand: "aporto run \"extract invoice fields\" \\\n  --param fileUrl=\"https://...\" \\\n  --wait",
     skills: ["PDF Extraction", "Invoice Parsing", "Contract Review", "OCR", "Summaries", "Classification", "Table Extraction"],
   },
   {
@@ -69,6 +77,7 @@ const skillCategories: SkillCategory[] = [
     count: "60+ skills",
     description: "Power catalog, marketplace, and product workflows with specialized AI capabilities.",
     command: "aporto.runSkill({ intent: 'generate ecommerce product media', params })",
+    cliCommand: "aporto run \"product description\" \\\n  --param title=\"Wireless Headphones\" \\\n  --wait",
     skills: ["Product Images", "Descriptions", "Review Mining", "Price Tracking", "Catalog Cleanup", "Market Research"],
   },
   {
@@ -76,6 +85,7 @@ const skillCategories: SkillCategory[] = [
     count: "75+ skills",
     description: "Give builders generation, QA, extraction, and diagnostics skills through the same MCP router.",
     command: "aporto.runSkill({ intent: 'debug failed API request', params })",
+    cliCommand: "aporto discover \"code review\" --json\naporto run 42 \\\n  --param code=\"...\" \\\n  --wait",
     skills: ["Code Review", "API Debugging", "Docs Generation", "Test Data", "Error Analysis", "Log Search", "SDK Helpers"],
   },
 ];
@@ -89,10 +99,10 @@ const audienceCards = [
 ];
 
 const howItWorks = [
-  ["Connect your system", "Integrate Aporto via MCP in minutes."],
-  ["Send requests normally", "Your app sends tasks like usual."],
-  ["Aporto routes everything", "Each request is automatically sent to the best model, tool, or skill."],
-  ["Get optimized results", "Higher quality, lower cost, better reliability."],
+  ["Install the CLI", "npm install -g @aporto-tech/sdk"],
+  ["Discover skills", "Search 1000+ skills by description."],
+  ["Run with one command", "Aporto routes to the best provider automatically."],
+  ["Get optimized results", "Higher quality, lower cost, automatic failover."],
 ];
 
 const engineSignals = [
@@ -145,7 +155,7 @@ const comparisons = [
   ["Manual scaling", "Automatic load balancing"],
   ["Downtime risk", "Automatic failover"],
   ["Hardcoded workflows", "Dynamic skill routing"],
-  ["Multiple integrations", "One MCP integration"],
+  ["Multiple integrations", "One CLI / one MCP endpoint"],
 ];
 
 const faqs = [
@@ -181,6 +191,7 @@ const faqs = [
 
 export default function NewLandingPage() {
   const [activeCategory, setActiveCategory] = useState(0);
+  const [codeMode, setCodeMode] = useState<"cli" | "sdk">("cli");
   const current = skillCategories[activeCategory];
 
   return (
@@ -215,7 +226,7 @@ export default function NewLandingPage() {
 
         <h1>Turn Any AI Agent Into a Full AI Workforce</h1>
         <p className={styles.heroCopy}>
-          One MCP integration connects your AI agent to 1000+ skills with automatic routing, failover, and load balancing.
+          One CLI command or MCP integration connects your AI agent to 1000+ skills with automatic routing, failover, and load balancing.
         </p>
 
         <div className={styles.heroActions}>
@@ -290,9 +301,9 @@ export default function NewLandingPage() {
 
       <section id="features" className={styles.integrateSection}>
         <div className={styles.sectionIntro}>
-          <span>Integrate this morning</span>
-          <h2>A simple, elegant interface so you can start using skills in minutes.</h2>
-          <p>It fits right into your code with SDKs for your favorite programming languages.</p>
+          <span>Start in one command</span>
+          <h2>Install the CLI and run your first skill in 30 seconds.</h2>
+          <p>Works from any terminal. Or integrate via SDK and MCP for production agents.</p>
         </div>
 
         <div className={styles.skillExplorer}>
@@ -327,18 +338,16 @@ export default function NewLandingPage() {
 
             <div className={styles.codeCard}>
               <div className={styles.codeHeader}>
-                <span>mcp-client.ts</span>
-                <span>TypeScript</span>
+                <span>
+                  <button type="button" onClick={() => setCodeMode("cli")} className={codeMode === "cli" ? styles.codeModeActive : styles.codeModeInactive}>CLI</button>
+                  <button type="button" onClick={() => setCodeMode("sdk")} className={codeMode === "sdk" ? styles.codeModeActive : styles.codeModeInactive}>TypeScript</button>
+                </span>
+                <span>{codeMode === "cli" ? "Terminal" : "TypeScript"}</span>
               </div>
-              <pre>{`import { Aporto } from "@aporto-tech/sdk";
-
-const aporto = new Aporto({
-  apiKey: process.env.APORTO_API_KEY,
-});
-
-const result = await ${current.command};
-
-console.log(result.artifact?.url);`}</pre>
+              <pre>{codeMode === "cli"
+                ? `$ npm install -g @aporto-tech/sdk\n$ export APORTO_API_KEY=sk-live-...\n\n$ ${current.cliCommand}`
+                : `import { AportoClient } from "@aporto-tech/sdk";\n\nconst aporto = new AportoClient({\n  apiKey: process.env.APORTO_API_KEY,\n});\n\nconst result = await ${current.command};\n\nconsole.log(result.artifact?.url);`
+              }</pre>
             </div>
           </div>
         </div>

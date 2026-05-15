@@ -698,6 +698,29 @@
   font-size: 13px;
 }
 
+.codeHeader button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px 10px;
+  border-radius: 4px;
+  font-size: 13px;
+  transition: color 0.15s, background 0.15s;
+}
+
+.codeModeActive {
+  color: #f7f7f8;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.codeModeInactive {
+  color: #6e6e78;
+}
+
+.codeModeInactive:hover {
+  color: #a4a4ad;
+}
+
 .codeCard pre {
   padding: 28px;
   color: #dedeE4;
